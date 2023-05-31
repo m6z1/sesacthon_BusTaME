@@ -7,6 +7,10 @@ android {
     namespace 'com.sesac.bustame'
     compileSdk 33
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId "com.sesac.bustame"
         minSdk 24
