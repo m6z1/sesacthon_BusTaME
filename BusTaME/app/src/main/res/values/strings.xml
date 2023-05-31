@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bustame</string>
+    <string name="logo_name1">BUS</string>
+    <string name="logo_name2">TAM_E</string>
 </resources>
