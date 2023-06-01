@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--버스타미 공식색 RGB-->
+    <color name="bustame_green">1BC866</color>
+    <color name="bustame_red">FF4123</color>
+    <color name="bustame_blue">1F85EA</color>
 </resources>
