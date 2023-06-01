@@ -48,4 +48,8 @@ dependencies {
 
     //splash
     implementation 'androidx.core:core-splashscreen:1.0.1'
+
+    //kakaomap api
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation files('libs/libDaumMapAndroid.jar')
 }
