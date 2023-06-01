@@ -16,15 +16,19 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(intent)
-            finish()
+            startStartActivity()
         }, DURATION)
     }
 
+    private fun startStartActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        startActivity(intent)
+        finish()
+    }
+
     companion object {
-        private const val DURATION : Long = 3000
+        private const val DURATION: Long = 3000
     }
 
     override fun onBackPressed() {
