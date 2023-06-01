@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Bustame</string>
     <string name="logo_name1">BUS</string>
-    <string name="logo_name2">TAM_E</string>
+    <string name="logo_name2">TAM-E</string>
+
+    <!--첫화면-->
+    <string name="btn_start">시작하기</string>
+    <string name="btn_login">로그인</string>
+    <string name="btn_next">다음</string>
+    <string name="btn_prev">이전</string>
 </resources>
