@@ -10,6 +10,7 @@ import net.daum.mf.map.api.MapView
 import android.Manifest
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import net.daum.mf.map.api.MapPoint
+import net.daum.mf.map.api.MapView.CurrentLocationEventListener
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         //바텀시트
         BottomSheetBehavior.from(binding.bottomSheet).apply {
             peekHeight = 200
-            this.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+            this.state = BottomSheetBehavior.STATE_EXPANDED
         }
 
         //권한 ID 선언
@@ -62,12 +63,39 @@ class MainActivity : AppCompatActivity() {
         //지도 출력
         mapView = MapView(this)
         binding.mapView.addView(mapView)
-
-
         //현재 위치로 지도 이동
         mapView.currentLocationTrackingMode =
             MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
         mapView.setShowCurrentLocationMarker(true)
+
+
+        //현재 위치 이벤트 리스너
+        mapView.setCurrentLocationEventListener(object : CurrentLocationEventListener {
+
+            override fun onCurrentLocationUpdate(
+                mapView: MapView,
+                mapPoint: MapPoint,
+                accuracyInMeters: Float
+            ) {
+                val latitude = mapPoint.mapPointGeoCoord.latitude
+                val longitude = mapPoint.mapPointGeoCoord.longitude
+
+                // 좌표값
+                println("Current Location: Latitude = $latitude, Longitude = $longitude")
+            }
+
+            override fun onCurrentLocationDeviceHeadingUpdate(mapView: MapView, v: Float) {
+                // 현재 위치 디바이스 방향 업데이트 이벤트 처리
+            }
+
+            override fun onCurrentLocationUpdateFailed(mapView: MapView) {
+                // 현재 위치 업데이트 실패 처리
+            }
+
+            override fun onCurrentLocationUpdateCancelled(mapView: MapView) {
+                // 현재 위치 업데이트 취소 처리
+            }
+        })
     }
 
 
