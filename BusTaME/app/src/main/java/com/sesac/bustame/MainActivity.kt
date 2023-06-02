@@ -9,6 +9,7 @@ import com.sesac.bustame.databinding.ActivityMainBinding
 import net.daum.mf.map.api.MapView
 import android.Manifest
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import net.daum.mf.map.api.MapPoint
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,9 +21,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //바텀시트
         BottomSheetBehavior.from(binding.bottomSheet).apply {
             peekHeight = 200
-            this.state=BottomSheetBehavior.STATE_COLLAPSED
+            this.state = BottomSheetBehavior.STATE_HALF_EXPANDED
         }
 
         //권한 ID 선언
@@ -62,7 +64,12 @@ class MainActivity : AppCompatActivity() {
         binding.mapView.addView(mapView)
 
 
+        //현재 위치로 지도 이동
+        mapView.currentLocationTrackingMode =
+            MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+        mapView.setShowCurrentLocationMarker(true)
     }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -87,4 +94,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 }
