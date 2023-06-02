@@ -7,7 +7,7 @@
     android:background="@drawable/background_start"
     tools:context=".StartActivity">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_logo"
         android:layout_width="176dp"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.1" />
 
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_intro"
         android:layout_width="300dp"
         android:layout_height="60dp"
