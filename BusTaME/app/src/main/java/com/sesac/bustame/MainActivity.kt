@@ -2,16 +2,19 @@ package com.sesac.bustame
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import com.sesac.bustame.databinding.ActivityMainBinding
+import android.view.ViewGroup
+import net.daum.mf.map.api.MapView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val mapView = MapView(this)
+
+        val mapViewContainer = findViewById<ViewGroup>(R.id.mapView)
+        mapViewContainer.addView(mapView)
 
     }
 }
-
