@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import com.sesac.bustame.databinding.ActivityMainBinding
 import net.daum.mf.map.api.MapView
 import android.Manifest
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +19,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        BottomSheetBehavior.from(binding.bottomSheet).apply {
+            peekHeight = 200
+            this.state=BottomSheetBehavior.STATE_COLLAPSED
+        }
 
         //권한 ID 선언
         val InternetPermission = ContextCompat.checkSelfPermission(
@@ -54,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         //지도 출력
         mapView = MapView(this)
         binding.mapView.addView(mapView)
+
 
     }
 
