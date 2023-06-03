@@ -79,13 +79,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:textColor="@color/busDirection"
+                    android:textColor="@color/bustame_black"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@id/busNumNameNanum"
                     app:layout_constraintStart_toEndOf="@id/busNumNameNanum"
                     app:layout_constraintTop_toTopOf="@id/busNumNameNanum"
                     tools:text="구일역, 제일제당 (중) 방면" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -103,7 +102,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/busDirection"
+                android:textColor="@color/bustame_black"
                 android:textSize="12sp"
                 tools:text="도봉산역광역환승센터 - 온수동종점" />
 
@@ -120,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_whenbusstop"
-                android:textColor="@color/busSelectRed"
+                android:textColor="@color/bustame_red"
                 android:textSize="12sp"
                 tools:text=" 곧 도착 (1정류장, 여유) " />
 
@@ -129,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:background="@drawable/ic_whenbusstop"
-                android:textColor="@color/busSelectRed"
+                android:textColor="@color/bustame_red"
                 android:textSize="12sp"
                 tools:text=" 곧 도착 (1정류장, 여유) " />
 
