@@ -20,6 +20,9 @@
         android:theme="@style/NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SetOccupants"
+            android:exported="false" />
+        <activity
             android:name=".BellActivity"
             android:exported="false" />
         <activity
