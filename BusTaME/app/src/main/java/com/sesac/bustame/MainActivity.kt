@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import com.sesac.bustame.databinding.ActivityMainBinding
 import net.daum.mf.map.api.MapView
 import android.Manifest
+import android.content.Intent
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView.CurrentLocationEventListener
@@ -26,6 +27,12 @@ class MainActivity : AppCompatActivity() {
         BottomSheetBehavior.from(binding.bottomSheet).apply {
             peekHeight = 200
             this.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+
+        //주변 정류장 확인하기 눌렀을 때
+        binding.imgIcCheckBJ.setOnClickListener {
+            val intent = Intent(this, BellActivity::class.java)
+            startActivity(intent)
         }
 
         //권한 ID 선언

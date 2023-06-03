@@ -9,4 +9,5 @@
     <string name="btn_next">다음</string>
     <string name="btn_prev">이전</string>
     <string name="toolbarItemBack">뒤로가기</string>
+    <string name="busNumName"> | </string>
 </resources>
