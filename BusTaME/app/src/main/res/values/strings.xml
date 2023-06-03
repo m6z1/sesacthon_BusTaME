@@ -12,4 +12,10 @@
     <string name="busNumName"> | </string>
     <string name="occupantBtnNormal">일반 좌석</string>
     <string name="occupantBtn">교통약자 좌석</string>
+    <string name="category_btn_disabled">장애인</string>
+    <string name="category_btn_old">고령자</string>
+    <string name="category_btn_pregnant">임산부</string>
+    <string name="category_btn_with_baby">영유아를 동반한 사람</string>
+    <string name="category_btn_else">기타</string>
+    <string name="btn_previous">이전</string>
 </resources>

@@ -23,9 +23,6 @@
             android:name=".SetUserCategory"
             android:exported="false" />
         <activity
-            android:name=".CategoryActivity"
-            android:exported="false" />
-        <activity
             android:name=".SetUserOccupants"
             android:exported="false" />
         <activity
@@ -36,9 +33,6 @@
             android:exported="false" />
         <activity
             android:name=".TestActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
