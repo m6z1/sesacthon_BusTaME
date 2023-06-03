@@ -9,7 +9,7 @@
         android:id="@+id/selectBtn"
         android:layout_width="52dp"
         android:layout_height="52dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -17,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginLeft="12dp"
+        android:layout_marginLeft="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -27,6 +27,7 @@
 
 
         <LinearLayout
+            android:id="@+id/firstBox"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
@@ -36,7 +37,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="44dp">
+                android:layout_height="44dp"
+                android:layout_marginTop="4dp">
 
                 <ImageView
                     android:id="@+id/ic_bus"
@@ -51,9 +53,9 @@
                     android:id="@+id/busNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="8dp"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/ic_bus"
@@ -66,8 +68,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="@string/busNumName"
-                    android:textColor="black"
-                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@id/busNum"
                     app:layout_constraintStart_toEndOf="@id/busNum"
                     app:layout_constraintTop_toTopOf="@id/busNum" />
@@ -77,18 +79,62 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
+                    android:textColor="@color/busDirection"
+                    android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@id/busNumNameNanum"
                     app:layout_constraintStart_toEndOf="@id/busNumNameNanum"
                     app:layout_constraintTop_toTopOf="@id/busNumNameNanum"
-                    tools:text="구일역, 제일제당 (중)" />
+                    tools:text="구일역, 제일제당 (중) 방면" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/firstBox">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/busDirection"
+                android:textSize="12sp"
+                tools:text="도봉산역광역환승센터 - 온수동종점" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/secondBox">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_whenbusstop"
+                android:textColor="@color/busSelectRed"
+                android:textSize="12sp"
+                tools:text=" 곧 도착 (1정류장, 여유) " />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/ic_whenbusstop"
+                android:textColor="@color/busSelectRed"
+                android:textSize="12sp"
+                tools:text=" 곧 도착 (1정류장, 여유) " />
+
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

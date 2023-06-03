@@ -22,9 +22,11 @@
             android:layout_height="180dp"
             android:src="@drawable/background_bell"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/busStopNum"
@@ -32,7 +34,6 @@
             android:layout_height="36dp"
             android:layout_marginTop="16dp"
             android:gravity="center"
-            android:text="17008"
             android:textColor="@color/black"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -47,7 +48,6 @@
             android:layout_height="52dp"
             android:layout_marginTop="12dp"
             android:gravity="center"
-            android:text="동양미래대학교. 구로성심병원(중)"
             android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintTop_toBottomOf="@id/busStopNum"
@@ -56,9 +56,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="32dp"
-            android:layout_marginTop="4dp"
             android:gravity="center"
-            android:text="구일역, 제일제당(중) 방면"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/busStopName"
@@ -67,10 +65,30 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ScrollView
+        android:id="@+id/busInfoBox"
         android:layout_width="match_parent"
-        android:layout_height="440dp"
-        app:layout_constraintTop_toBottomOf="@id/busStopInfoBox"/>
+        android:layout_height="400dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/busStopInfoBox">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/busRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="440dp"
+            app:layout_constraintTop_toBottomOf="@id/busStopInfoBox"
+            tools:listitem="@layout/item_businfo" />
+
+    </ScrollView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bell_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 
