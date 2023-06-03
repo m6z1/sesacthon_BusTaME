@@ -10,4 +10,6 @@
     <string name="btn_prev">이전</string>
     <string name="toolbarItemBack">뒤로가기</string>
     <string name="busNumName"> | </string>
+    <string name="occupantBtnNormal">일반 좌석</string>
+    <string name="occupantBtn">교통약자 좌석</string>
 </resources>
