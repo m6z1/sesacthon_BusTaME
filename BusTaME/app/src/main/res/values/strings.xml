@@ -18,4 +18,6 @@
     <string name="category_btn_with_baby">영유아를 동반한 사람</string>
     <string name="category_btn_else">기타</string>
     <string name="btn_previous">이전</string>
+    <string name="occupant_intro1">님은</string>
+    <string name="occupant_intro2">어떤 좌석 탑승자인가요?</string>
 </resources>
