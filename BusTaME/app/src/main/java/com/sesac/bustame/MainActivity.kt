@@ -10,13 +10,16 @@ import net.daum.mf.map.api.MapView
 import android.Manifest
 import android.content.Intent
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.gson.JsonObject
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView.CurrentLocationEventListener
+import java.util.function.LongToIntFunction
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var mapView: MapView
+    private var isInitialLocationTracked = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,11 +87,23 @@ class MainActivity : AppCompatActivity() {
                 mapPoint: MapPoint,
                 accuracyInMeters: Float
             ) {
-                val latitude = mapPoint.mapPointGeoCoord.latitude
-                val longitude = mapPoint.mapPointGeoCoord.longitude
+                val latitude = mapPoint.mapPointGeoCoord.latitude //위도
+                val longitude = mapPoint.mapPointGeoCoord.longitude //경도
 
-                // 좌표값
-                println("Current Location: Latitude = $latitude, Longitude = $longitude")
+                val locationJson = JsonObject()
+                locationJson.apply {
+                    addProperty("tmX", latitude)
+                    addProperty("tmY", longitude)
+
+                    // 처음 위치 추적 후 추적 중지
+                    if (!isInitialLocationTracked) {
+                        // 처음 위치 추적 후 추적 중지
+                        isInitialLocationTracked = true
+                        mapView.currentLocationTrackingMode =
+                            MapView.CurrentLocationTrackingMode.TrackingModeOff
+
+                    }
+                }
             }
 
             override fun onCurrentLocationDeviceHeadingUpdate(mapView: MapView, v: Float) {
