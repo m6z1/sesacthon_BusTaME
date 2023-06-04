@@ -10,12 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <net.daum.mf.map.api.MapView
             android:id="@+id/mapView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </RelativeLayout>
+        </net.daum.mf.map.api.MapView>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/mainBar"

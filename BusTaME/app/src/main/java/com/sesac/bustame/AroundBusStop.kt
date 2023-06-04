@@ -1,6 +1,10 @@
 package com.sesac.bustame
 
-data class aroundBusStop(
+data class ItemList(
+    val itemList: List<AroundBusStop>
+)
+
+data class AroundBusStop(
     val posX: String,
     val stationTp: String,
     val arsId: String,

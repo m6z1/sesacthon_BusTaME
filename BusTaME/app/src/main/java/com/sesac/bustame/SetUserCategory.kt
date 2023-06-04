@@ -14,11 +14,13 @@ class SetUserCategory : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnPrev.setOnClickListener {
-            val intent = Intent(this, SetUserOccupants::class.java)
-            startActivity(intent)
-
-            // 현재 액티비티 종료
+            // 이전 액티비티로
             finish()
+        }
+        
+        binding.btnNext.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }

@@ -4,110 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SetUserCategory">
+    tools:context=".SetUserToDeliveryo">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <ImageView
         android:id="@+id/setRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:src="@drawable/todelivery_rate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/category_rate" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/categoryName"
+    <ImageView
+        android:id="@+id/todeliveryName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@id/setRate"
-        app:layout_constraintTop_toBottomOf="@id/setRate"
-        app:srcCompat="@drawable/category_name" />
+        android:src="@drawable/todeliver_name"
+        app:layout_constraintStart_toStartOf="@+id/setRate"
+        app:layout_constraintTop_toBottomOf="@+id/setRate" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/categoryIntro"
+    <ImageView
+        android:id="@+id/todeliveryIntro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="@+id/categoryName"
-        app:layout_constraintTop_toBottomOf="@+id/categoryName"
-        app:srcCompat="@drawable/category_intro" />
+        android:src="@drawable/todeliver_intro"
+        app:layout_constraintStart_toStartOf="@+id/setRate"
+        app:layout_constraintTop_toBottomOf="@+id/todeliveryName" />
 
-     <Button
-        android:id="@+id/btnDisabled"
+    <Button
+        android:id="@+id/btnWait"
         android:layout_width="316dp"
         android:layout_height="60dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/radius"
         android:elevation="80dp"
-        android:text="@string/category_btn_disabled"
+        android:text="@string/todelivery_btn_wait"
         android:textColor="@color/bustame_green"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryIntro" />
+        app:layout_constraintTop_toBottomOf="@+id/todeliveryIntro" />
 
     <Button
-        android:id="@+id/btnOld"
+        android:id="@+id/btnChair"
         android:layout_width="316dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/radius"
         android:elevation="80dp"
-        android:text="@string/category_btn_old"
+        android:text="@string/todelivery_btn_chair"
         android:textColor="@color/bustame_green"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDisabled" />
+        app:layout_constraintTop_toBottomOf="@+id/btnWait" />
 
     <Button
-        android:id="@+id/btnPregnant"
+        android:id="@+id/btnBabycar"
         android:layout_width="316dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/radius"
         android:elevation="80dp"
-        android:text="@string/category_btn_pregnant"
+        android:text="@string/todelivery_btn_babycar"
         android:textColor="@color/bustame_green"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnOld" />
+        app:layout_constraintTop_toBottomOf="@+id/btnChair" />
+
 
     <Button
-        android:id="@+id/btnWithBaby"
+        android:id="@+id/btnNothing"
         android:layout_width="316dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/radius"
         android:elevation="80dp"
-        android:text="@string/category_btn_with_baby"
+        android:text="@string/todelivery_btn_nothing"
         android:textColor="@color/bustame_green"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPregnant" />
+        app:layout_constraintTop_toBottomOf="@+id/btnBabycar" />
 
-    <Button
-        android:id="@+id/btnElse"
-        android:layout_width="316dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/radius"
-        android:elevation="80dp"
-        android:text="@string/category_btn_else"
-        android:textColor="@color/bustame_green"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnWithBaby" />
 
     <Button
         android:id="@+id/btnPrev"
@@ -121,7 +108,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/btnElse" />
+        app:layout_constraintStart_toStartOf="@+id/btnNothing" />
 
     <Button
         android:id="@+id/btnNext"
@@ -135,7 +122,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btnPrev"
-        app:layout_constraintEnd_toEndOf="@+id/btnElse"
+        app:layout_constraintEnd_toEndOf="@+id/btnNothing"
         app:layout_constraintTop_toTopOf="@+id/btnPrev" />
 
 
