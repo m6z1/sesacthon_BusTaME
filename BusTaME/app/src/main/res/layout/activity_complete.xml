@@ -6,4 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".CompleteActivity">
 
+    <ImageView
+        android:id="@+id/setRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/complete_rate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/compName"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/complete_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setRate" />
+
+    <ImageView
+        android:id="@+id/compIntro"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/complete_intro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/compName" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/complete_logo"
+        app:layout_constraintEnd_toEndOf="@+id/compIntro"
+        app:layout_constraintStart_toStartOf="@+id/compIntro"
+        app:layout_constraintTop_toBottomOf="@+id/compIntro" />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/radius"
+        android:backgroundTint="@color/btnGreen"
+        android:text="@string/complete_btn_final"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/compIntro"
+        app:layout_constraintStart_toStartOf="@+id/compIntro" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
