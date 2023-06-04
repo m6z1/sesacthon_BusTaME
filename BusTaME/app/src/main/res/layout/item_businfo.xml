@@ -7,8 +7,8 @@
 
     <RadioButton
         android:id="@+id/selectBtn"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/selectBtn"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
 
         <LinearLayout
@@ -119,18 +119,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_whenbusstop"
+                android:paddingHorizontal="4dp"
                 android:textColor="@color/bustame_red"
                 android:textSize="12sp"
-                tools:text=" 곧 도착 (1정류장, 여유) " />
+                tools:text="곧 도착 (1정류장, 여유)" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:background="@drawable/ic_whenbusstop"
+                android:paddingHorizontal="4dp"
                 android:textColor="@color/bustame_red"
                 android:textSize="12sp"
-                tools:text=" 곧 도착 (1정류장, 여유) " />
+                tools:text="곧 도착 (1정류장, 여유)" />
 
         </LinearLayout>
 

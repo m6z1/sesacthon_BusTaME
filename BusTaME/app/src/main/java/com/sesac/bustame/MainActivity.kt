@@ -155,9 +155,9 @@ class MainActivity : AppCompatActivity() {
                     addProperty("tmX", latitude)
                     addProperty("tmY", longitude)
                     addProperty("radius", radius)
-
                 }
 
+                this@MainActivity.locationJson = locationJson
             }
 
             override fun onCurrentLocationDeviceHeadingUpdate(mapView: MapView, v: Float) {
