@@ -8,4 +8,30 @@
     <string name="btn_login">로그인</string>
     <string name="btn_next">다음</string>
     <string name="btn_prev">이전</string>
+    <string name="toolbarItemBack">뒤로가기</string>
+    <string name="busNumName"> | </string>
+
+    <!--좌석 선택 화면-->
+    <string name="occupantBtnNormal">일반 좌석</string>
+    <string name="occupantBtn">교통약자 좌석</string>
+
+    <!--교통약자 유형 선택 화면-->
+    <string name="category_btn_disabled">장애인</string>
+    <string name="category_btn_old">고령자</string>
+    <string name="category_btn_pregnant">임산부</string>
+    <string name="category_btn_with_baby">영유아를 동반한 사람</string>
+    <string name="category_btn_else">기타</string>
+
+    <string name="btn_previous">이전</string>
+    <string name="occupant_intro1">님은</string>
+    <string name="occupant_intro2">어떤 좌석 탑승자인가요?</string>
+
+
+    <!--버스 기사님께 선택 화면-->
+    <string name="todelivery_btn_wait">버스 정차 시 조금 기다려주세요.</string>
+    <string name="todelivery_btn_nothing">없음</string>
+    <string name="todelivery_btn_babycar">유모차가 있어요.</string>
+    <string name="todelivery_btn_chair">휠체어용 발판을 이용할게요.</string>
+    <string name="complete_btn_final">버스타미 이용하러 가기</string>
+
 </resources>

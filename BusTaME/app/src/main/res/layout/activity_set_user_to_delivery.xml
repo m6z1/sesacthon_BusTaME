@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetUserToDeliveryo">
+
+    <ImageView
+        android:id="@+id/setRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/todelivery_rate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/todeliveryName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/todeliver_name"
+        app:layout_constraintStart_toStartOf="@+id/setRate"
+        app:layout_constraintTop_toBottomOf="@+id/setRate" />
+
+    <ImageView
+        android:id="@+id/todeliveryIntro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/todeliver_intro"
+        app:layout_constraintStart_toStartOf="@+id/setRate"
+        app:layout_constraintTop_toBottomOf="@+id/todeliveryName" />
+
+    <Button
+        android:id="@+id/btnWait"
+        android:layout_width="316dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/radius"
+        android:elevation="80dp"
+        android:text="@string/todelivery_btn_wait"
+        android:textColor="@color/bustame_green"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todeliveryIntro" />
+
+    <Button
+        android:id="@+id/btnChair"
+        android:layout_width="316dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/radius"
+        android:elevation="80dp"
+        android:text="@string/todelivery_btn_chair"
+        android:textColor="@color/bustame_green"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnWait" />
+
+    <Button
+        android:id="@+id/btnBabycar"
+        android:layout_width="316dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/radius"
+        android:elevation="80dp"
+        android:text="@string/todelivery_btn_babycar"
+        android:textColor="@color/bustame_green"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnChair" />
+
+
+    <Button
+        android:id="@+id/btnNothing"
+        android:layout_width="316dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/radius"
+        android:elevation="80dp"
+        android:text="@string/todelivery_btn_nothing"
+        android:textColor="@color/bustame_green"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBabycar" />
+
+
+    <Button
+        android:id="@+id/btnPrev"
+        android:layout_width="148dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/radius"
+        android:elevation="100dp"
+        android:text="@string/btn_previous"
+        android:textColor="@color/bustame_green"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btnNothing" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="148dp"
+        android:layout_height="60dp"
+        android:background="@drawable/radius"
+        android:backgroundTint="@color/btnGreen"
+        android:elevation="100dp"
+        android:text="@string/btn_next"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPrev"
+        app:layout_constraintEnd_toEndOf="@+id/btnNothing"
+        app:layout_constraintTop_toTopOf="@+id/btnPrev" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

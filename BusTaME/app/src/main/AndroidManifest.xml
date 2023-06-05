@@ -20,13 +20,25 @@
         android:theme="@style/NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".CompleteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SetUserToDelivery"
+            android:exported="false" />
+        <activity
+            android:name=".SetUserCategory"
+            android:exported="false" />
+        <activity
+            android:name=".SetUserOccupants"
+            android:exported="false" />
+        <activity
+            android:name=".BellActivity"
+            android:exported="false" />
+        <activity
             android:name=".StartActivity"
             android:exported="false" />
         <activity
             android:name=".TestActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
