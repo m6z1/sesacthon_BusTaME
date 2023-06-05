@@ -8,9 +8,12 @@ import androidx.core.content.ContextCompat
 import com.sesac.bustame.databinding.ActivityMainBinding
 import net.daum.mf.map.api.MapView
 import android.Manifest
+import android.content.res.Resources
 import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.JsonObject
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
@@ -22,7 +25,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
 
     private lateinit var binding: ActivityMainBinding
-    private var isInitialLocationTracked = false
+    private lateinit var bottomSheetDefaultDialog: BottomSheetDialog
     private lateinit var locationJson: JsonObject
     private var tmX: String? = null
     private var tmY: String? = null
@@ -35,11 +38,6 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
 
         locationJson = JsonObject()
 
-        //바텀시트
-        BottomSheetBehavior.from(binding.bottomSheet).apply {
-            peekHeight = 200
-            this.state = BottomSheetBehavior.STATE_EXPANDED
-        }
 
         //권한 ID 선언
         val InternetPermission = ContextCompat.checkSelfPermission(
@@ -73,6 +71,8 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
             }
         }
 
+
+
         //현재 위치로 지도 이동
         binding.mapView.currentLocationTrackingMode =
             MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
@@ -80,8 +80,12 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
         //현재 위치 이벤트 리스너
         binding.mapView.setCurrentLocationEventListener(this)
 
+
+
         //주변 정류장 확인하기 눌렀을 때
-        binding.imgIcCheckBJ.setOnClickListener {
+        val bottomSheetView = layoutInflater.inflate(R.layout.layout_bottom_sheet_default, null)
+        val aroundCheckBusStop = bottomSheetView.findViewById<ImageView>(R.id.checkBusStop)
+        aroundCheckBusStop.setOnClickListener {
             if (tmX != null && tmY != null) {
                 Log.d(
                     "responsedata", "${tmX.toString()} ${tmY.toString()}"
@@ -119,7 +123,6 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
                                 binding.mapView.addPOIItem(marker)
 
 
-
                             }
                         } else {
                             // 서버로부터 실패 응답을 받은 경우 처리
@@ -139,6 +142,9 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
             }
 
         }
+
+        //defalut 바텀 시트
+        showDefalutBottomSheet()
 
 
     }
@@ -185,11 +191,22 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
 
     override fun onCurrentLocationUpdateFailed(mapView: MapView) {
         // 현재 위치 업데이트 실패 처리
-        Log.d("lati", "FailFailFailFailFailFailFailFail")
+        Log.d("lati", "latiFail")
     }
 
     override fun onCurrentLocationUpdateCancelled(mapView: MapView) {
         // 현재 위치 업데이트 취소 처리
     }
+
+    private fun showDefalutBottomSheet() {
+        val bottomSheetView = layoutInflater.inflate(R.layout.layout_bottom_sheet_default, null)
+        bottomSheetDefaultDialog = BottomSheetDialog(this)
+        bottomSheetDefaultDialog.behavior.peekHeight = 1200 // 원하는 높이 값으로 설정
+        bottomSheetDefaultDialog.behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        bottomSheetDefaultDialog.setContentView(bottomSheetView)
+
+        bottomSheetDefaultDialog.show()
+    }
+
 
 }
