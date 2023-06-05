@@ -23,6 +23,9 @@
             android:name=".CompleteActivity"
             android:exported="false" />
         <activity
+            android:name=".SetUserToDelivery"
+            android:exported="false" />
+        <activity
             android:name=".SetUserCategory"
             android:exported="false" />
         <activity

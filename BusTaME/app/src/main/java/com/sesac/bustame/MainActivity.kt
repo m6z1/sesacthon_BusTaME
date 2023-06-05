@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
     private lateinit var locationJson: JsonObject
     private var tmX: String? = null
     private var tmY: String? = null
-    private var radius: String = "300"
+    private var radius: String = "100"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -117,6 +117,8 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
 
                                 // 마커를 지도에 추가합니다
                                 binding.mapView.addPOIItem(marker)
+
+
 
                             }
                         } else {

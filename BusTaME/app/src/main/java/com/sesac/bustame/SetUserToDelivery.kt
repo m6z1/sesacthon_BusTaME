@@ -40,7 +40,8 @@ class SetUserToDelivery : AppCompatActivity() {
         }
 
         binding.btnNext.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, CompleteActivity::class.java)
+            startActivity(intent)
         }
     }
 }

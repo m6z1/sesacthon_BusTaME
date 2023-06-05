@@ -19,7 +19,7 @@ class SetUserCategory : AppCompatActivity() {
         }
         
         binding.btnNext.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, SetUserToDelivery::class.java)
             startActivity(intent)
         }
     }
