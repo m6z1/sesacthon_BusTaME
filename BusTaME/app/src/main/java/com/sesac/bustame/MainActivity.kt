@@ -8,9 +8,13 @@ import androidx.core.content.ContextCompat
 import com.sesac.bustame.databinding.ActivityMainBinding
 import net.daum.mf.map.api.MapView
 import android.Manifest
+import android.content.res.Resources
 import android.util.Log
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.JsonObject
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
@@ -22,7 +26,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
 
     private lateinit var binding: ActivityMainBinding
-    private var isInitialLocationTracked = false
+    private lateinit var bottomSheetDefaultDialog: BottomSheetDialog
     private lateinit var locationJson: JsonObject
     private var tmX: String? = null
     private var tmY: String? = null
@@ -35,11 +39,6 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
 
         locationJson = JsonObject()
 
-        //바텀시트
-        BottomSheetBehavior.from(binding.bottomSheet).apply {
-            peekHeight = 200
-            this.state = BottomSheetBehavior.STATE_EXPANDED
-        }
 
         //권한 ID 선언
         val InternetPermission = ContextCompat.checkSelfPermission(
@@ -73,6 +72,7 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
             }
         }
 
+
         //현재 위치로 지도 이동
         binding.mapView.currentLocationTrackingMode =
             MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
@@ -80,65 +80,8 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
         //현재 위치 이벤트 리스너
         binding.mapView.setCurrentLocationEventListener(this)
 
-        //주변 정류장 확인하기 눌렀을 때
-        binding.imgIcCheckBJ.setOnClickListener {
-            if (tmX != null && tmY != null) {
-                Log.d(
-                    "responsedata", "${tmX.toString()} ${tmY.toString()}"
-                )
-                //현재 위치 좌표 서버로 보내기
-                val call = RetrofitClient.service.sendUserPosData(
-                    LocationInfo(
-                        tmY!!,
-                        tmX!!,
-                        radius
-                    )
-                )
-                call.enqueue(object : Callback<ItemList> {
-                    override fun onResponse(
-                        call: Call<ItemList>,
-                        response: Response<ItemList>
-                    ) {
-                        if (response.isSuccessful) {
-                            val responseData = response.body()
-                            Log.d("responsedata", responseData.toString())
-
-                            // itemList를 처리하고 지도 위에 마커를 표시합니다
-                            for (item in responseData!!.itemList) {
-                                val latitude = item.gpsY.toDouble()
-                                val longitude = item.gpsX.toDouble()
-
-                                // 지도 위에 마커 표시
-                                val marker = MapPOIItem()
-                                marker.itemName = item.stationNm
-                                marker.mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude)
-                                // 원하는 대로 마커의 모양을 커스터마이징할 수 있습니다
-                                // ...
-
-                                // 마커를 지도에 추가합니다
-                                binding.mapView.addPOIItem(marker)
-
-
-
-                            }
-                        } else {
-                            // 서버로부터 실패 응답을 받은 경우 처리
-                            Log.d("serverresponse", "FailFailResponse")
-                            Log.d("serverresponsecode", response.code().toString())
-                        }
-                    }
-
-                    override fun onFailure(call: Call<ItemList>, t: Throwable) {
-                        // 통신 실패 처리
-                        Log.d("serverresponse", "fail $t")
-                    }
-                })
-
-            } else {
-                Toast.makeText(this, "위치를 찾을 수 없음", Toast.LENGTH_SHORT).show()
-            }
-
-        }
+        //defalut 바텀 시트
+        showDefalutBottomSheet()
 
 
     }
@@ -185,11 +128,85 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
 
     override fun onCurrentLocationUpdateFailed(mapView: MapView) {
         // 현재 위치 업데이트 실패 처리
-        Log.d("lati", "FailFailFailFailFailFailFailFail")
+        Log.d("lati", "latiFail")
     }
 
     override fun onCurrentLocationUpdateCancelled(mapView: MapView) {
         // 현재 위치 업데이트 취소 처리
     }
+
+    private fun showDefalutBottomSheet() {
+        val bottomSheetView = layoutInflater.inflate(R.layout.layout_bottom_sheet_default, null)
+        val btnAroundBusStop = bottomSheetView.findViewById<Button>(R.id.btnAroundBusStop)
+
+        // 주변 정류장 확인하기 눌렀을 때
+        btnAroundBusStop.setOnClickListener {
+            Toast.makeText(this, "버튼이 눌립니다", Toast.LENGTH_SHORT).show()
+            // 클릭 이벤트 처리 로직 추가
+
+            if (tmX != null && tmY != null) {
+                Log.d(
+                    "responsedata", "${tmX.toString()} ${tmY.toString()}"
+                )
+                //현재 위치 좌표 서버로 보내기
+                val call = RetrofitClient.service.sendUserPosData(
+                    LocationInfo(
+                        tmY!!,
+                        tmX!!,
+                        radius
+                    )
+                )
+                call.enqueue(object : Callback<ItemList> {
+                    override fun onResponse(
+                        call: Call<ItemList>,
+                        response: Response<ItemList>
+                    ) {
+                        if (response.isSuccessful) {
+                            val responseData = response.body()
+                            Log.d("responsedata", responseData.toString())
+
+                            // itemList를 처리하고 지도 위에 마커를 표시합니다
+                            for (item in responseData!!.itemList) {
+                                val latitude = item.gpsY.toDouble()
+                                val longitude = item.gpsX.toDouble()
+
+                                // 지도 위에 마커 표시
+                                val marker = MapPOIItem()
+                                marker.itemName = item.stationNm
+                                marker.mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude)
+                                // 원하는 대로 마커의 모양을 커스터마이징할 수 있습니다
+                                // ...
+
+                                // 마커를 지도에 추가합니다
+                                binding.mapView.addPOIItem(marker)
+
+
+                            }
+                        } else {
+                            // 서버로부터 실패 응답을 받은 경우 처리
+                            Log.d("serverresponse", "FailFailResponse")
+                            Log.d("serverresponsecode", response.code().toString())
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ItemList>, t: Throwable) {
+                        // 통신 실패 처리
+                        Log.d("serverresponse", "fail $t")
+                    }
+                })
+
+            } else {
+                Toast.makeText(this, "위치를 찾을 수 없음", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+        bottomSheetDefaultDialog = BottomSheetDialog(this)
+        bottomSheetDefaultDialog.behavior.peekHeight = 1200 // 원하는 높이 값으로 설정
+        bottomSheetDefaultDialog.behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        bottomSheetDefaultDialog.setContentView(bottomSheetView)
+
+        bottomSheetDefaultDialog.show()
+    }
+
 
 }
