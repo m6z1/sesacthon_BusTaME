@@ -83,14 +83,33 @@
     </ScrollView>
 
     <Button
-        android:layout_width="wrap_content"
+        android:id="@+id/button"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:background="@drawable/radius"
         android:backgroundTint="@color/bustame_black"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="20dp"
+        android:paddingStart="52dp"
+        android:text="@string/btn_rideBell"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:elevation="4dp"
+        android:src="@drawable/ic_bell"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintTop_toTopOf="@+id/button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

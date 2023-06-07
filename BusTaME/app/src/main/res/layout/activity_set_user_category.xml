@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/categoryName"
         app:srcCompat="@drawable/category_intro" />
 
-     <Button
+    <Button
         android:id="@+id/btnDisabled"
         android:layout_width="316dp"
         android:layout_height="60dp"
@@ -111,32 +111,19 @@
 
     <Button
         android:id="@+id/btnPrev"
-        android:layout_width="148dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/radius"
-        android:elevation="100dp"
-        android:text="@string/btn_previous"
-        android:textColor="@color/bustame_green"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/btnElse" />
-
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_width="148dp"
-        android:layout_height="60dp"
-        android:background="@drawable/radius"
         android:backgroundTint="@color/btnGreen"
         android:elevation="100dp"
-        android:text="@string/btn_next"
+        android:text="@string/btn_previous"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btnPrev"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btnElse"
-        app:layout_constraintTop_toTopOf="@+id/btnPrev" />
+        app:layout_constraintStart_toStartOf="@+id/btnElse" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

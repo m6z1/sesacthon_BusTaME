@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SetUserToDeliveryo">
+    tools:context=".SetUserToDelivery">
 
     <ImageView
         android:id="@+id/setRate"
@@ -98,32 +98,19 @@
 
     <Button
         android:id="@+id/btnPrev"
-        android:layout_width="148dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/radius"
-        android:elevation="100dp"
-        android:text="@string/btn_previous"
-        android:textColor="@color/bustame_green"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/btnNothing" />
-
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_width="148dp"
-        android:layout_height="60dp"
-        android:background="@drawable/radius"
         android:backgroundTint="@color/btnGreen"
         android:elevation="100dp"
-        android:text="@string/btn_next"
+        android:text="@string/btn_previous"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btnPrev"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btnNothing"
-        app:layout_constraintTop_toTopOf="@+id/btnPrev" />
+        app:layout_constraintStart_toStartOf="@+id/btnNothing" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
