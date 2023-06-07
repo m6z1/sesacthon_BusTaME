@@ -20,6 +20,9 @@
         android:theme="@style/NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".WaitBus"
+            android:exported="false" />
+        <activity
             android:name=".CompleteActivity"
             android:exported="false" />
         <activity
