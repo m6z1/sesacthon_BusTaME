@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startStartActivity() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, WaitBus::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
         startActivity(intent)
         finish()

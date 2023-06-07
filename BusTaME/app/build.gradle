@@ -61,4 +61,7 @@ dependencies {
     //Material.io (바텀시트)
     implementation 'com.google.android.material:material:1.9.0'
 
+    //도착 정보 애니메이션
+    implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
+
 }

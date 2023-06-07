@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener {
     private lateinit var rideBellJson: JsonObject
     private var tmX: String? = null
     private var tmY: String? = null
-    private var radius: String = "300"
+    private var radius: String = "100"
 
     private lateinit var passengerTypeValue: String
     private lateinit var seatTypeValue: String
