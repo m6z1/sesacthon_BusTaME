@@ -15,7 +15,7 @@
         android:id="@+id/intro"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:paddingHorizontal="20dp"
         android:text="기사님께\n승차를 요청했어요!"
         android:textAlignment="center"
