@@ -15,4 +15,7 @@ interface RetrofitService {
     @POST("/busStopByPos")
     fun sendUserPosData(@Body locationInfo: LocationInfo): Call<ItemList>
 
+    @POST("/busStopInfo")
+    fun sendBusStopIdData(@Body busInfoData : JsonObject) : Call<BusArriveInfo>
+
 }

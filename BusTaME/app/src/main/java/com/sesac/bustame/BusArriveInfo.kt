@@ -1,0 +1,57 @@
+package com.sesac.bustame
+
+data class BusArriveInfo(
+    val itemList: List<Item>
+)
+
+data class Item(
+    val busRouteAbrv: String,
+    val traTime1: String, //도착예정버스
+    val vehId2: String,
+    val vehId1: String,
+    val traTime2: String,
+    val isFullFlag1: String,
+    val isFullFlag2: String,
+    val arrmsgSec1: String,
+    val arrmsgSec2: String,
+    val arrmsg2: String,
+    val adirection: String,
+    val arrmsg1: String,
+    val arsId: String,
+    val rtNm: String,
+    val busType1: String,
+    val busType2: String,
+    val isLast1: String,
+    val sectNm: String,
+    val isLast2: String,
+    val nextBus: String,
+    val term: String,
+    val routeType: String,
+    val gpsX: String,
+    val isArrive1: String,
+    val gpsY: String,
+    val isArrive2: String,
+    val stationNm1: String,
+    val sectOrd2: String,
+    val stationTp: String,
+    val rerdieDiv1: String,
+    val nxtStn: String,
+    val rerdieDiv2: String,
+    val sectOrd1: String,
+    val stId: String,
+    val staOrd: String,
+    val firstTm: String,
+    val posX: String,
+    val repTm1: String,
+    val posY: String,
+    val traSpd1: String,
+    val rerideNum2: String,
+    val stNm: String,
+    val lastTm: String,
+    val rerideNum1: String,
+    val traSpd2: String,
+    val deTourAt: String,
+    val congestion: String,
+    val busRouteId: String,
+    val stationNm2: String
+)

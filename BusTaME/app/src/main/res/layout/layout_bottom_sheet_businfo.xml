@@ -60,6 +60,7 @@
         tools:text="구일역, 제일제당(중) 방면" />
 
     <Button
+        android:id="@+id/btnGoBusBell"
         android:layout_width="0dp"
         android:layout_height="52dp"
         android:layout_marginTop="32dp"
