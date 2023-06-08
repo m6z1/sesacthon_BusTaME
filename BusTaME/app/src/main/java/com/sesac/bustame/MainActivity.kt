@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
     private lateinit var rideBellJson: JsonObject
     private var tmX: String? = null
     private var tmY: String? = null
-    private var radius: String = "150"
+    private var radius: String = "300"
     private var responseData: ItemList? = null
 
     private lateinit var passengerTypeValue: String
@@ -250,6 +250,8 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
             }
         }
 
+        btnGoBusBell.visibility = View.VISIBLE
+
         btnGoBusBell.setOnClickListener {
             val intent = Intent(this, BellActivity::class.java)
             intent.putExtra("busStopNum", stationNum)
@@ -257,14 +259,12 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
             startActivity(intent)
         }
 
-        btnGoBusBell.visibility = View.VISIBLE
 
         val busInfoBottomSheetDialog = BottomSheetDialog(this)
         busInfoBottomSheetDialog.behavior.peekHeight = 1200 // 원하는 높이 값으로 설정
-        busInfoBottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        busInfoBottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_COLLAPSED
         busInfoBottomSheetDialog.setContentView(bottomSheetView)
         busInfoBottomSheetDialog.show()
     }
-
 
 }
