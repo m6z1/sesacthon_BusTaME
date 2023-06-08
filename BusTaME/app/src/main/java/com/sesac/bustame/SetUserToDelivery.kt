@@ -9,7 +9,6 @@ class SetUserToDelivery : AppCompatActivity() {
 
     private lateinit var binding: ActivitySetUserToDeliveryBinding
     private lateinit var messageValue: String
-    private lateinit var seatTypeValue: String
     private lateinit var passengerTypeValue: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,9 +23,7 @@ class SetUserToDelivery : AppCompatActivity() {
         }
 
         //intent 값 가져오기
-        seatTypeValue = intent.getStringExtra(BusRideBell.BUS_SEAT_TYPE_KEY).toString()
-        passengerTypeValue =
-            intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
+        passengerTypeValue = intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
 
         binding.btnWait.setOnClickListener {
             messageValue = "버스 정차 시 조금 기다려주세요"
@@ -54,8 +51,7 @@ class SetUserToDelivery : AppCompatActivity() {
     }
 
     private fun navigateToNextActivity() {
-        val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra(BusRideBell.BUS_SEAT_TYPE_KEY, seatTypeValue)
+        val intent = Intent(this, CompleteActivity::class.java)
         intent.putExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY, passengerTypeValue)
         intent.putExtra(BusRideBell.BUS_MESSAGE_KEY, messageValue)
         startActivity(intent)
@@ -63,7 +59,6 @@ class SetUserToDelivery : AppCompatActivity() {
 
     private fun saveRideBellData() {
         val rideBellData = RideBellData(
-            seatType = seatTypeValue!!,
             passengerType = passengerTypeValue!!,
             message = messageValue,
             busNumber = "",

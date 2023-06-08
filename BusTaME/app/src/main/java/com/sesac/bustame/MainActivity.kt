@@ -10,6 +10,7 @@ import net.daum.mf.map.api.MapView
 import android.Manifest
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var bottomSheetDefaultDialog: BottomSheetDialog
+    private lateinit var bottomSheetBusInfoDialog : BottomSheetDialog
     private lateinit var locationJson: JsonObject
     private var tmX: String? = null
     private var tmY: String? = null
@@ -38,8 +40,9 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
     private var responseData: ItemList? = null
 
     private lateinit var passengerTypeValue: String
-    private lateinit var seatTypeValue: String
     private lateinit var messageValue: String
+
+    private var isDefalutBottomSheetOpen = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,9 +52,7 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
         locationJson = JsonObject()
 
         // 이전 액티비티 값 받아오기
-        seatTypeValue = intent.getStringExtra(BusRideBell.BUS_SEAT_TYPE_KEY).toString()
-        passengerTypeValue =
-            intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
+        passengerTypeValue = intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
         messageValue = intent.getStringExtra(BusRideBell.BUS_MESSAGE_KEY).toString()
 
         // 권한 ID 선언
@@ -90,6 +91,16 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
         binding.mapView.setCurrentLocationEventListener(this)
 
         binding.mapView.setPOIItemEventListener(this)
+
+        binding.mainBar.setOnClickListener {
+            binding.mapView.currentLocationTrackingMode =
+                MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
+            binding.mapView.setShowCurrentLocationMarker(true)
+            if(!isDefalutBottomSheetOpen) {
+                createDefaultBottomSheet()
+                isDefalutBottomSheetOpen = true
+            }
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -195,8 +206,10 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
                                 marker.itemName = item.stationNm
                                 marker.mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude)
 
-                                // 마커 커스텀하기
-                                // TODO: 마커 커스터마이징 코드 추가
+                                // 커스텀 마커
+                                marker.customImageResourceId = R.drawable.ic_busstop_marker
+                                marker.isCustomImageAutoscale = false      // 커스텀 마커 이미지 크기 자동 조정
+                                marker.setCustomImageAnchor(0.5f, 1.0f)
 
                                 // 마커를 지도에 추가합니다
                                 binding.mapView.addPOIItem(marker)
@@ -220,11 +233,15 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
             }
         }
 
-        bottomSheetDefaultDialog = BottomSheetDialog(this)
+        bottomSheetDefaultDialog = BottomSheetDialog(this, R.style.AppBottomSheetDialogTheme)
         bottomSheetDefaultDialog.behavior.peekHeight = 1200 // 원하는 높이 값으로 설정
         bottomSheetDefaultDialog.behavior.state = BottomSheetBehavior.STATE_COLLAPSED
         bottomSheetDefaultDialog.setContentView(bottomSheetView)
+        bottomSheetDefaultDialog.setOnDismissListener {
+            isDefalutBottomSheetOpen = false
+        }
         bottomSheetDefaultDialog.show()
+
 
     }
 
@@ -259,12 +276,12 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
             startActivity(intent)
         }
 
+        bottomSheetBusInfoDialog = BottomSheetDialog(this, R.style.AppBottomSheetDialogTheme)
+        bottomSheetBusInfoDialog.behavior.peekHeight = 1200 // 원하는 높이 값으로 설정
+        bottomSheetBusInfoDialog.behavior.state = BottomSheetBehavior.STATE_COLLAPSED //바텀 시트 완전히 펴져있는 상태
+        bottomSheetBusInfoDialog.setContentView(bottomSheetView)
+        bottomSheetBusInfoDialog.show()
 
-        val busInfoBottomSheetDialog = BottomSheetDialog(this)
-        busInfoBottomSheetDialog.behavior.peekHeight = 1200 // 원하는 높이 값으로 설정
-        busInfoBottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        busInfoBottomSheetDialog.setContentView(bottomSheetView)
-        busInfoBottomSheetDialog.show()
     }
 
 }

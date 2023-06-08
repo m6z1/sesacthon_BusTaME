@@ -29,7 +29,7 @@
         android:id="@+id/categoryIntro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="@+id/categoryName"
         app:layout_constraintTop_toBottomOf="@+id/categoryName"
         app:srcCompat="@drawable/category_intro" />
@@ -37,7 +37,7 @@
     <Button
         android:id="@+id/btnDisabled"
         android:layout_width="316dp"
-        android:layout_height="60dp"
+        android:layout_height="48dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/radius"
         android:elevation="80dp"
@@ -52,7 +52,7 @@
     <Button
         android:id="@+id/btnOld"
         android:layout_width="316dp"
-        android:layout_height="60dp"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/radius"
         android:elevation="80dp"
@@ -67,7 +67,7 @@
     <Button
         android:id="@+id/btnPregnant"
         android:layout_width="316dp"
-        android:layout_height="60dp"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/radius"
         android:elevation="80dp"
@@ -82,7 +82,7 @@
     <Button
         android:id="@+id/btnWithBaby"
         android:layout_width="316dp"
-        android:layout_height="60dp"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/radius"
         android:elevation="80dp"
@@ -95,9 +95,24 @@
         app:layout_constraintTop_toBottomOf="@+id/btnPregnant" />
 
     <Button
+        android:id="@+id/btnWounded"
+        android:layout_width="316dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/radius"
+        android:elevation="80dp"
+        android:text="@string/category_btn_wounded"
+        android:textColor="@color/bustame_green"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnWithBaby" />
+
+    <Button
         android:id="@+id/btnElse"
         android:layout_width="316dp"
-        android:layout_height="60dp"
+        android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/radius"
         android:elevation="80dp"
@@ -107,7 +122,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnWithBaby" />
+        app:layout_constraintTop_toBottomOf="@+id/btnWounded" />
 
     <Button
         android:id="@+id/btnPrev"

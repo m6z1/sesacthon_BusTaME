@@ -58,11 +58,16 @@ class BellActivity : AppCompatActivity() {
 
                     // itemList를 활용하여 받아온 버스 정보 처리
                     if (newItemList != null) {
+                        itemList.clear()
                         itemList.addAll(newItemList)
                         itemAdapter.notifyDataSetChanged()
+
+
+                        Log.d("serverresponse", "success")
+                        Log.d("serverresponse", itemList.toString())
+                    } else {
+                        Log.d("serverresponse", "리스트가 비어있어요")
                     }
-                    Log.d("serverresponse", "success")
-                    Log.d("serverresponse", busStopNum)
                 } else {
                     // 서버로부터 실패 응답을 받은 경우 처리
                     Log.d("serverresponse", "FailFailResponse")

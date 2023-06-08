@@ -27,7 +27,7 @@ class StartActivity : AppCompatActivity() {
     }
 
     fun navigateToNextActivity() {
-        val intent = Intent(this, SetUserOccupants::class.java)
+        val intent = Intent(this, SetUserCategory::class.java)
         startActivity(intent)
     }
 }

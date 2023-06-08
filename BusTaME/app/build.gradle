@@ -64,4 +64,7 @@ dependencies {
     //도착 정보 애니메이션
     implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
 
+    //CardView
+    implementation 'androidx.cardview:cardview:1.0.0'
+
 }
