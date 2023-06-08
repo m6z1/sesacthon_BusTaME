@@ -102,11 +102,18 @@
 
             <TextView
                 android:id="@+id/direction"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/bustame_black"
                 android:textSize="12sp"
                 tools:text="도봉산역광역환승센터 - 온수동종점" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bustame_black"
+                android:textSize="12sp"
+                android:text=" 방면" />
 
         </LinearLayout>
 
