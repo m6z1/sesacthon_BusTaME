@@ -28,12 +28,13 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var bottomSheetDefaultDialog: BottomSheetDialog
-    private lateinit var bottomSheetBusInfoDialog: BottomSheetDialog
     private lateinit var locationJson: JsonObject
-    private lateinit var rideBellJson: JsonObject
     private var tmX: String? = null
     private var tmY: String? = null
     private var radius: String = "300"
+
+    private lateinit var busStopNum: String
+    private lateinit var busStopName: String
     private var responseData: ItemList? = null
 
     private lateinit var passengerTypeValue: String
@@ -54,17 +55,17 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
         messageValue = intent.getStringExtra(BusRideBell.BUS_MESSAGE_KEY).toString()
 
         // 권한 ID 선언
-        val InternetPermission =
+        val internetPermission =
             ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET)
-        val FineLocaPermission =
+        val fineLocaPermission =
             ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-        val CoarseLocaPermission =
+        val coarseLocaPermission =
             ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
 
         // 권한이 열려있는지 확인
-        if (InternetPermission == PackageManager.PERMISSION_DENIED ||
-            FineLocaPermission == PackageManager.PERMISSION_DENIED ||
-            CoarseLocaPermission == PackageManager.PERMISSION_DENIED
+        if (internetPermission == PackageManager.PERMISSION_DENIED ||
+            fineLocaPermission == PackageManager.PERMISSION_DENIED ||
+            coarseLocaPermission == PackageManager.PERMISSION_DENIED
         ) {
             // 마쉬멜로우 이상 버전부터 권한을 물어봅니다.
             // 권한 체크(READ_PHONE_STATE의 requestCode를 1000으로 세팅
@@ -141,8 +142,8 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
 
     override fun onPOIItemSelected(mapView: MapView, marker: MapPOIItem) {
         // 선택한 버스 정류장의 정보를 마커에서 가져옵니다
-        val busStopNum = marker.tag.toString()
-        val busStopName = marker.itemName
+        busStopNum = marker.tag.toString()
+        busStopName = marker.itemName
 
         // 버스 정보 바텀시트를 생성하고 표시합니다
         createBusInfoBottomSheet(responseData!!, busStopNum, busStopName)
@@ -190,6 +191,7 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
 
                                 // 지도 위에 마커 표시
                                 val marker = MapPOIItem()
+                                marker.tag = item.arsId.toInt()
                                 marker.itemName = item.stationNm
                                 marker.mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude)
 
@@ -230,22 +232,20 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
     // businfo 바텀시트 생성 및 표시
     private fun createBusInfoBottomSheet(
         responseData: ItemList,
-        stationNum: String,
-        stationName: String
+        busStopNum: String,
+        busStopName: String
     ) {
         val bottomSheetView = layoutInflater.inflate(R.layout.layout_bottom_sheet_businfo, null)
         val busStopNumTextView = bottomSheetView.findViewById<TextView>(R.id.busStopNum)
         val busStopNameTextView = bottomSheetView.findViewById<TextView>(R.id.busStopName)
         val btnGoBusBell = bottomSheetView.findViewById<Button>(R.id.btnGoBusBell)
 
-        busStopNumTextView.text = stationNum
-        busStopNameTextView.text = stationName
-
         // 아래 코드 추가
-        val itemList = responseData?.itemList ?: emptyList()
+        val itemList = responseData!!.itemList ?: emptyList()
         for (item in itemList) {
-            if (item.stationNm == stationName) {
+            if (item.stationNm == busStopName) {
                 busStopNumTextView.text = item.arsId
+                busStopNameTextView.text = item.stationNm
                 break
             }
         }
@@ -254,8 +254,8 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
 
         btnGoBusBell.setOnClickListener {
             val intent = Intent(this, BellActivity::class.java)
-            intent.putExtra("busStopNum", stationNum)
-            intent.putExtra("busStopName", stationName)
+            intent.putExtra("busStopNum", busStopNum)
+            intent.putExtra("busStopName", busStopName)
             startActivity(intent)
         }
 
