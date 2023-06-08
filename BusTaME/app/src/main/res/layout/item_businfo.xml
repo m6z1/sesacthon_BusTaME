@@ -9,15 +9,16 @@
         android:id="@+id/selectBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintFirst"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -100,6 +101,7 @@
             app:layout_constraintTop_toBottomOf="@id/firstBox">
 
             <TextView
+                android:id="@+id/direction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/bustame_black"
@@ -116,20 +118,24 @@
             app:layout_constraintTop_toBottomOf="@id/secondBox">
 
             <TextView
+                android:id="@+id/first_bus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_whenbusstop"
                 android:paddingHorizontal="4dp"
+                android:textAlignment="center"
                 android:textColor="@color/bustame_red"
                 android:textSize="12sp"
                 tools:text="곧 도착 (1정류장, 여유)" />
 
             <TextView
+                android:id="@+id/second_bus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:background="@drawable/ic_whenbusstop"
                 android:paddingHorizontal="4dp"
+                android:textAlignment="center"
                 android:textColor="@color/bustame_red"
                 android:textSize="12sp"
                 tools:text="곧 도착 (1정류장, 여유)" />

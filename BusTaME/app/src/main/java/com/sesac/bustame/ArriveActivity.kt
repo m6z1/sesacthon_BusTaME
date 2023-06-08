@@ -4,24 +4,22 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.sesac.bustame.databinding.ActivitySplashBinding
+import com.sesac.bustame.databinding.ActivityArriveBinding
 
-class SplashActivity : AppCompatActivity() {
+class ArriveActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySplashBinding
-
+    private lateinit var binding: ActivityArriveBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_arrive)
 
         Handler().postDelayed({
             startStartActivity()
-        }, DURATION)
+        }, ArriveActivity.DURATION)
     }
 
     private fun startStartActivity() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, WaitBus::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
         startActivity(intent)
         finish()
@@ -34,5 +32,4 @@ class SplashActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
     }
-
 }
