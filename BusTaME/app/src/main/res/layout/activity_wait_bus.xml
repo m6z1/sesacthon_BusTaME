@@ -103,7 +103,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:text="버스 내부가 혼잡할 경우\n 탑승이 불가할 수도 있어요."
         android:textAlignment="center"
         android:textColor="@color/black"

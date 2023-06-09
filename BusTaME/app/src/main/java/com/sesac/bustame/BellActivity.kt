@@ -1,6 +1,7 @@
 package com.sesac.bustame
 
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -31,11 +32,10 @@ class BellActivity : AppCompatActivity() {
         setContentView(binding.root)
         setCustomToolbar(R.layout.custom_actionbar)
 
-
-
         // 마커 정보 받아오기
         busStopNum = intent.getStringExtra("busStopNum").toString()
         busStopName = intent.getStringExtra("busStopName").toString()
+        Log.d("markervalue","$busStopNum $busStopName")
 
         // 이전 액티비티 값 받아오기
         passengerTypeValue = intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
@@ -82,6 +82,7 @@ class BellActivity : AppCompatActivity() {
         alertDialogBuilder.setPositiveButton("예") { dialog: DialogInterface, _: Int ->
             busNumValue = selectedBusNum
             sendUserRideBellData()
+            navigateToNextActivity()
             dialog.dismiss() // 다이얼로그 닫기
         }
         alertDialogBuilder.setNegativeButton("취소") { dialog: DialogInterface, _: Int ->
@@ -122,6 +123,12 @@ class BellActivity : AppCompatActivity() {
                 Log.d("serverresponse","통신아예실패")
             }
         })
+    }
+    private fun navigateToNextActivity() {
+        val intent = Intent(this, WaitBus::class.java)
+        intent.putExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY, passengerTypeValue)
+        intent.putExtra(BusRideBell.BUS_NUM_VALUE_KEY, busNumValue)
+        startActivity(intent)
     }
 }
 

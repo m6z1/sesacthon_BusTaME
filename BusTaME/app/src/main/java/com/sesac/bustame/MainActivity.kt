@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
     private lateinit var locationJson: JsonObject
     private var tmX: String? = null
     private var tmY: String? = null
-    private var radius: String = "300"
+    private var radius: String = "100"
 
     private lateinit var busStopNum: String
     private lateinit var busStopName: String
@@ -208,8 +208,10 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
                                 marker.mapPoint = MapPoint.mapPointWithGeoCoord(latitude, longitude)
 
                                 // 커스텀 마커
+                                marker.markerType = MapPOIItem.MarkerType.CustomImage
                                 marker.customImageResourceId = R.drawable.ic_busstop_marker
-                                marker.isCustomImageAutoscale = false      // 커스텀 마커 이미지 크기 자동 조정
+                                marker.customSelectedImageResourceId = R.drawable.ic_busstop_marker
+                                marker.isCustomImageAutoscale = true      // 커스텀 마커 이미지 크기 자동 조정
                                 marker.setCustomImageAnchor(0.5f, 1.0f)
 
                                 // 마커를 지도에 추가합니다
@@ -272,6 +274,8 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
 
         btnGoBusBell.setOnClickListener {
             val intent = Intent(this, BellActivity::class.java)
+            intent.putExtra("busStopNum", busStopNum)
+            intent.putExtra("busStopName", busStopName)
             intent.putExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY, passengerTypeValue)
             intent.putExtra(BusRideBell.BUS_MESSAGE_KEY, messageValue)
             startActivity(intent)
