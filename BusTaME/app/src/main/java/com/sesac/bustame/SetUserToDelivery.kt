@@ -2,6 +2,7 @@ package com.sesac.bustame
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.sesac.bustame.databinding.ActivitySetUserToDeliveryBinding
 
@@ -62,7 +63,7 @@ class SetUserToDelivery : AppCompatActivity() {
             passengerType = passengerTypeValue!!,
             message = messageValue,
             busNumber = "",
-            busStopName = ""
+            busStopNum = ""
         )
         RideBellDataManager.saveRideBellData(rideBellData, this)
     }

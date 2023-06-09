@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
         // 이전 액티비티 값 받아오기
         passengerTypeValue = intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
         messageValue = intent.getStringExtra(BusRideBell.BUS_MESSAGE_KEY).toString()
+        Log.d("intentvalue","$passengerTypeValue $messageValue")
 
         // 권한 ID 선언
         val internetPermission =
@@ -271,8 +272,8 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
 
         btnGoBusBell.setOnClickListener {
             val intent = Intent(this, BellActivity::class.java)
-            intent.putExtra("busStopNum", busStopNum)
-            intent.putExtra("busStopName", busStopName)
+            intent.putExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY, passengerTypeValue)
+            intent.putExtra(BusRideBell.BUS_MESSAGE_KEY, messageValue)
             startActivity(intent)
         }
 

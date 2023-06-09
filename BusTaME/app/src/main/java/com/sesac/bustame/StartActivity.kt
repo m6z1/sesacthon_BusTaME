@@ -16,6 +16,9 @@ class StartActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnNext.setOnClickListener {
+
+            navigateToNextActivity()
+            /*
             val alertDialog = AlertDialog.Builder(this)
             alertDialog.setTitle("title").setMessage("시작메뉴")
                 .setPositiveButton("Start", DialogInterface.OnClickListener { dialog, id ->
@@ -24,6 +27,10 @@ class StartActivity : AppCompatActivity() {
             alertDialog.create()
             alertDialog.show()
         }
+             */
+
+        }
+
     }
 
     fun navigateToNextActivity() {
