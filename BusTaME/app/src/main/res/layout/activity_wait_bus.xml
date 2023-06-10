@@ -7,15 +7,11 @@
     android:background="@drawable/background_bus_ride_bell"
     tools:context=".WaitBus">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/custom_actionbar_waitbus" />
-
     <TextView
         android:id="@+id/intro"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="36dp"
         android:paddingHorizontal="20dp"
         android:text="기사님께\n승차를 요청했어요!"
         android:textAlignment="center"
@@ -24,7 +20,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/busStopName"
@@ -59,8 +55,9 @@
         android:layout_height="40dp"
         android:layout_marginTop="68dp"
         android:background="@drawable/radius"
-        android:backgroundTint="@color/btnGreen"
+        android:backgroundTint="@color/bustame_blue"
         android:clickable="false"
+        android:padding="4dp"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -71,7 +68,7 @@
 
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/busArriveTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
@@ -98,7 +95,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/circularProgressBar"
         app:layout_constraintEnd_toEndOf="@+id/circularProgressBar"
         app:layout_constraintStart_toStartOf="@+id/circularProgressBar"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/busArriveTime"
         tools:text="로딩 중" />
 
     <TextView

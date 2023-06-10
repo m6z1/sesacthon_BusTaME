@@ -1,6 +1,5 @@
 package com.sesac.bustame
 
-import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
