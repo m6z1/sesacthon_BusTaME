@@ -24,7 +24,8 @@ class SetUserToDelivery : AppCompatActivity() {
         }
 
         //intent 값 가져오기
-        passengerTypeValue = intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
+        passengerTypeValue =
+            intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
 
         binding.btnWait.setOnClickListener {
             messageValue = "버스 정차 시 조금 기다려주세요"

@@ -1,6 +1,7 @@
 package com.sesac.bustame
 
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -53,9 +54,14 @@ class WaitBus : AppCompatActivity() {
         }
 
         val circularProgressBar = binding.circularProgressBar
-        val rotationAnimation = ObjectAnimator.ofFloat(circularProgressBar, "rotation", 0f, 360f)
-        rotationAnimation.duration = 1000
-        rotationAnimation.repeatCount = ObjectAnimator.INFINITE
-        rotationAnimation.start()
+        // 프로그레스 바 애니메이션 설정
+        val animator = ValueAnimator.ofFloat(0f, 360f)
+        animator.duration = 2000
+        animator.repeatCount = ValueAnimator.INFINITE
+        animator.addUpdateListener { animation ->
+            val animatedValue = animation.animatedValue as Float
+            circularProgressBar.progress = animatedValue
+        }
+        animator.start()
     }
 }
