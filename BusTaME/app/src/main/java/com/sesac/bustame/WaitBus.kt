@@ -1,9 +1,13 @@
 package com.sesac.bustame
 
 import android.animation.ValueAnimator
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
+import android.view.View
 import com.google.gson.JsonObject
 import com.sesac.bustame.databinding.ActivityWaitBusBinding
 import okhttp3.ResponseBody
@@ -17,14 +21,20 @@ class WaitBus : AppCompatActivity() {
     private lateinit var busNum: String
     private lateinit var busStopName: String
     private lateinit var busStopNum: String
-    private var responseId: Long = 0
     private lateinit var busArriveInfo: String
     private lateinit var itemAdapter: ItemAdapter
+
+    private var responseId : Long = 0
 
     private lateinit var passengerTypeValue: String
     private lateinit var messageValue: String
     private val itemList: ArrayList<Item> = ArrayList()
-    
+
+    private val handler = Handler(Looper.getMainLooper())
+    private val updateInterval: Long = 30000 // 30초
+
+    private var isCountDownStarted = false
+    private val countdownDuration = 30000
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,6 +111,15 @@ class WaitBus : AppCompatActivity() {
                                 this@WaitBus.busArriveInfo = item.arrmsg1
 
                                 binding.busArriveTime.text = this@WaitBus.busArriveInfo
+
+                                // 버스가 도착했을 때 버튼 숨기기
+                                if (this@WaitBus.busArriveInfo == "곧 도착") {
+                                    binding.btnCancel.visibility = View.GONE
+                                    startCountdonw()
+                                } else {
+                                    binding.btnCancel.visibility = View.VISIBLE
+                                }
+
                                 break
                             }
                         }
@@ -129,4 +148,49 @@ class WaitBus : AppCompatActivity() {
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+        // 액티비티가 화면에 표시될 때 타이머 시작
+        startUpdateTimer()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // 액티비티가 화면에서 사라질 때 타이머 정지
+        stopUpdateTimer()
+    }
+
+    private fun startUpdateTimer() {
+        // 타이머 시작
+        handler.postDelayed(updateRunnable, updateInterval)
+    }
+
+    private fun stopUpdateTimer() {
+        // 타이머 정지
+        handler.removeCallbacks(updateRunnable)
+    }
+
+    private val updateRunnable = object : Runnable {
+        override fun run() {
+            // 업데이트 메서드 호출
+            updateArriveInfo()
+
+            // 다음 업데이트를 위해 타이머 재시작
+            handler.postDelayed(this, updateInterval)
+        }
+    }
+
+    private fun startCountdonw() {
+        isCountDownStarted = false
+
+        val countdownHandler = Handler(Looper.getMainLooper())
+        countdownHandler.postDelayed({
+            navigateToArriveActivity()
+        }, countdownDuration.toLong())
+    }
+
+    private fun navigateToArriveActivity() {
+        val intent = Intent(this, ArriveActivity::class.java)
+        startActivity(intent)
+    }
 }

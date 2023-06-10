@@ -4,6 +4,8 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -29,6 +31,9 @@ class BellActivity : AppCompatActivity() {
     private lateinit var messageValue: String
     private lateinit var busNumValue: String
     private var responseId: Long = 0
+
+    private val handler = Handler(Looper.getMainLooper())
+    private val updateInterval: Long = 30000 // 30초
 
     private val itemList: ArrayList<Item> = ArrayList()
 
@@ -101,26 +106,7 @@ class BellActivity : AppCompatActivity() {
 
     }
 
-    private fun showPopupDialog() {
-        Log.d("popupvalue", "$passengerTypeValue $messageValue")
-        val selectedBusNum = itemAdapter.getSelectedBusNum()
-        val alertDialogBuilder = AlertDialog.Builder(this)
-        alertDialogBuilder.setTitle("${selectedBusNum}번 버스 승차벨을 울릴까요?")
-        alertDialogBuilder.setMessage("승객 유형: $passengerTypeValue\n요청: $messageValue\n")
-        alertDialogBuilder.setPositiveButton("예") { dialog: DialogInterface, _: Int ->
-            busNumValue = selectedBusNum
-            sendUserRideBellData()
-            navigateToNextActivity()
-            dialog.dismiss() // 다이얼로그 닫기
-        }
-        alertDialogBuilder.setNegativeButton("취소") { dialog: DialogInterface, _: Int ->
-            dialog.dismiss() // 다이얼로그 닫기
-        }
 
-        val alertDialog = alertDialogBuilder.create()
-        alertDialog.show()
-
-    }
 
     // 툴바 띄우기
     private fun setCustomToolbar(layout: Int) {
@@ -152,7 +138,11 @@ class BellActivity : AppCompatActivity() {
                 // 성공적으로 서버로 데이터 전송이 완료됨
                 if (response.isSuccessful) {
                     val responseBody = response.body()?.string()
-                    responseId = responseBody?.trim()?.toLongOrNull() ?: 0
+                    val newResponseId = responseBody?.trim()?.toLongOrNull()
+                    if(newResponseId != null) {
+                        responseId = newResponseId
+
+                    }
                     Log.d("serverresponse", "성공적으로 보내졌습니다")
                     Log.d("serverresponse", responseId.toString())
 
@@ -168,13 +158,105 @@ class BellActivity : AppCompatActivity() {
         })
     }
 
-    private fun navigateToNextActivity() {
+    private fun navigateToNextActivity(responseId : Long) {
         val intent = Intent(this, WaitBus::class.java)
         intent.putExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY, passengerTypeValue)
         intent.putExtra(BusRideBell.BUS_NUM_VALUE_KEY, busNumValue)
         intent.putExtra("busStopName", busStopName)
         intent.putExtra("responseId", responseId)
         intent.putExtra("busStopNum", busStopNum)
+        Log.d("intentvalue", "$responseId")
         startActivity(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // 액티비티가 화면에 표시될 때 타이머 시작
+        startUpdateTimer()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // 액티비티가 화면에서 사라질 때 타이머 정지
+        stopUpdateTimer()
+    }
+
+    private fun startUpdateTimer() {
+        // 타이머 시작
+        handler.postDelayed(updateRunnable, updateInterval)
+    }
+
+    private fun stopUpdateTimer() {
+        // 타이머 정지
+        handler.removeCallbacks(updateRunnable)
+    }
+
+    private val updateRunnable = object : Runnable {
+        override fun run() {
+            // 업데이트 메서드 호출
+            updateArriveInfo()
+
+            // 다음 업데이트를 위해 타이머 재시작
+            handler.postDelayed(this, updateInterval)
+        }
+    }
+
+    fun updateArriveInfo() {
+        // 통신해서 버스 정보 받아오기
+        val busInfoData = JsonObject()
+        busInfoData.addProperty("busStopId", busStopNum)
+
+        val call = RetrofitClient.service.sendBusStopIdData(busInfoData)
+        call.enqueue(object : Callback<BusArriveInfo> {
+            override fun onResponse(call: Call<BusArriveInfo>, response: Response<BusArriveInfo>) {
+                if (response.isSuccessful) {
+                    val busArriveInfo = response.body()
+                    val newItemList = busArriveInfo?.itemList
+
+                    // itemList를 활용하여 받아온 버스 정보 처리
+                    if (newItemList != null) {
+                        itemList.clear()
+                        itemList.addAll(newItemList)
+                        itemAdapter.notifyDataSetChanged()
+
+
+                        Log.d("serverresponse", "success")
+                        Log.d("serverresponse", itemList.toString())
+                    } else {
+                        Log.d("serverresponse", "리스트가 비어있어요")
+                    }
+                } else {
+                    // 서버로부터 실패 응답을 받은 경우 처리
+                    Log.d("serverresponse", "FailFailResponse")
+                    Log.d("serverresponsecode", response.code().toString())
+                }
+            }
+
+            override fun onFailure(call: Call<BusArriveInfo>, t: Throwable) {
+                // 통신 실패 처리
+                Log.d("serverresponse", "fail $t")
+            }
+        })
+    }
+
+    private fun showPopupDialog() {
+        Log.d("popupvalue", "$passengerTypeValue $messageValue")
+        val selectedBusNum = itemAdapter.getSelectedBusNum()
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        alertDialogBuilder.setTitle("${selectedBusNum}번 버스 승차벨을 울릴까요?")
+        alertDialogBuilder.setMessage("승객 유형: $passengerTypeValue\n요청: $messageValue\n")
+        alertDialogBuilder.setPositiveButton("예") { dialog: DialogInterface, _: Int ->
+            busNumValue = selectedBusNum
+            sendUserRideBellData()
+            navigateToNextActivity(responseId)
+            dialog.dismiss() // 다이얼로그 닫기
+        }
+        alertDialogBuilder.setNegativeButton("취소") { dialog: DialogInterface, _: Int ->
+            dialog.dismiss() // 다이얼로그 닫기
+        }
+
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+
     }
 }
