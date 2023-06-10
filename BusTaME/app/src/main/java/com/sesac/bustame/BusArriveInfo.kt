@@ -10,7 +10,7 @@ data class Item(
     val vehId2: String,
     val vehId1: String,
     val traTime2: String,
-    val isFullFlag1: String,
+    val isFullFlag1: String, //도착 만차여부
     val isFullFlag2: String,
     val arrmsgSec1: String,
     val arrmsgSec2: String,
@@ -19,7 +19,7 @@ data class Item(
     val arrmsg1: String, //첫번째 도착 버스 정보 메시지
     val arsId: String,
     val rtNm: String,
-    val busType1: String,
+    val busType1: String, //첫번째 도착 예정 버스 차량 유형
     val busType2: String,
     val isLast1: String,
     val sectNm: String,

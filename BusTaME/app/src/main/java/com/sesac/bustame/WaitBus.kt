@@ -4,6 +4,7 @@ import android.animation.ValueAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.google.gson.JsonObject
 import com.sesac.bustame.databinding.ActivityWaitBusBinding
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -15,7 +16,17 @@ class WaitBus : AppCompatActivity() {
     private lateinit var binding: ActivityWaitBusBinding
     private lateinit var busNum: String
     private lateinit var busStopName: String
+    private lateinit var busStopNum: String
     private var responseId: Long = 0
+    private lateinit var busArriveInfo: String
+    private lateinit var itemAdapter: ItemAdapter
+
+    private lateinit var passengerTypeValue: String
+    private lateinit var messageValue: String
+    private val itemList: ArrayList<Item> = ArrayList()
+    
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWaitBusBinding.inflate(layoutInflater)
@@ -25,6 +36,10 @@ class WaitBus : AppCompatActivity() {
         busNum = intent.getStringExtra(BusRideBell.BUS_NUM_VALUE_KEY).toString()
         busStopName = intent.getStringExtra("busStopName").toString()
         responseId = intent.getLongExtra("responseId", 0)
+        busStopNum = intent.getStringExtra("busStopNum").toString()
+        passengerTypeValue =
+            intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
+        messageValue = intent.getStringExtra(BusRideBell.BUS_MESSAGE_KEY).toString()
 
         binding.busStopName.text = busStopName
         binding.busNum.text = busNum
@@ -62,5 +77,56 @@ class WaitBus : AppCompatActivity() {
             circularProgressBar.progress = animatedValue
         }
         animator.start()
+
+        updateArriveInfo()
     }
+
+    fun updateArriveInfo() {
+        val busInfoData = JsonObject()
+        busInfoData.addProperty("busStopId", busStopNum)
+
+        val call = RetrofitClient.service.sendBusStopIdData(busInfoData)
+        call.enqueue(object : Callback<BusArriveInfo> {
+            override fun onResponse(call: Call<BusArriveInfo>, response: Response<BusArriveInfo>) {
+                if (response.isSuccessful) {
+                    val busArriveInfo = response.body()
+                    val newItemList = busArriveInfo?.itemList
+
+                    // itemList를 활용하여 받아온 버스 정보 처리
+                    if (newItemList != null) {
+                        itemList.clear()
+
+                        for (item in newItemList) {
+                            if (busNum == item.busRouteAbrv) {
+                                this@WaitBus.busArriveInfo = item.arrmsg1
+
+                                binding.busArriveTime.text = this@WaitBus.busArriveInfo
+                                break
+                            }
+                        }
+
+                        if (!::itemAdapter.isInitialized) {
+                            itemAdapter = ItemAdapter(itemList, messageValue, passengerTypeValue) // itemAdapter 초기화
+                        } else {
+                            itemAdapter.notifyDataSetChanged()
+                        }
+
+                        Log.d("serverresponse", "success")
+                    } else {
+                        Log.d("serverresponse", "리스트가 비어있어요")
+                    }
+                } else {
+                    // 서버로부터 실패 응답을 받은 경우 처리
+                    Log.d("serverresponse", "FailFailResponse")
+                    Log.d("serverresponsecode", response.code().toString())
+                }
+            }
+
+            override fun onFailure(call: Call<BusArriveInfo>, t: Throwable) {
+                // 통신 실패 처리
+                Log.d("serverresponse", "fail $t")
+            }
+        })
+    }
+
 }

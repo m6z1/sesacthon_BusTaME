@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -103,7 +104,6 @@ class BellActivity : AppCompatActivity() {
     private fun showPopupDialog() {
         Log.d("popupvalue", "$passengerTypeValue $messageValue")
         val selectedBusNum = itemAdapter.getSelectedBusNum()
-
         val alertDialogBuilder = AlertDialog.Builder(this)
         alertDialogBuilder.setTitle("${selectedBusNum}번 버스 승차벨을 울릴까요?")
         alertDialogBuilder.setMessage("승객 유형: $passengerTypeValue\n요청: $messageValue\n")
@@ -174,6 +174,7 @@ class BellActivity : AppCompatActivity() {
         intent.putExtra(BusRideBell.BUS_NUM_VALUE_KEY, busNumValue)
         intent.putExtra("busStopName", busStopName)
         intent.putExtra("responseId", responseId)
+        intent.putExtra("busStopNum", busStopNum)
         startActivity(intent)
     }
 }
