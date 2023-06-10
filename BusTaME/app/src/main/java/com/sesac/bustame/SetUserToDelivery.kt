@@ -63,7 +63,7 @@ class SetUserToDelivery : AppCompatActivity() {
             passengerType = passengerTypeValue!!,
             message = messageValue,
             busNumber = "",
-            busStopNum = ""
+            busStopNumber = ""
         )
         RideBellDataManager.saveRideBellData(rideBellData, this)
     }

@@ -67,7 +67,7 @@ class SetUserCategory : AppCompatActivity() {
             passengerType = passengerTypeValue,
             message = "",
             busNumber = "",
-            busStopNum = ""
+            busStopNumber = ""
         )
         RideBellDataManager.saveRideBellData(rideBellData, this)
     }

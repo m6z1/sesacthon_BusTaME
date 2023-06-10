@@ -1,15 +1,12 @@
 package com.sesac.bustame
 
-import android.content.Intent
-import android.widget.ImageView
 import com.google.gson.JsonObject
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface RetrofitService {
     @POST("/busStop")
@@ -25,7 +22,7 @@ interface RetrofitService {
     fun sendUserRideBellData(@Body rideBellData: RideBellData): Call<ResponseBody>
 
     @DELETE("/RideBell/{Id}")
-    fun deleteUserRideBellData()
+    fun deleteUserRideBellData(@Path("Id") Id : Long): Call<ResponseBody>
 
 }
 

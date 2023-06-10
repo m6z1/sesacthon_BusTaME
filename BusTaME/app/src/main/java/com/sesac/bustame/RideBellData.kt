@@ -5,6 +5,6 @@ data class RideBellData(
     val passengerType: String,
     val message: String,
     val busNumber: String,
-    val busStopNum: String
+    val busStopNumber: String
 
 )

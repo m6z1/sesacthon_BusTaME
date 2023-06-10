@@ -9,7 +9,9 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import com.google.gson.JsonObject
+import com.google.gson.JsonPrimitive
 import com.sesac.bustame.databinding.ActivityBellBinding
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -25,6 +27,7 @@ class BellActivity : AppCompatActivity() {
     private lateinit var passengerTypeValue: String
     private lateinit var messageValue: String
     private lateinit var busNumValue: String
+    private var responseId: Long = 0
 
     private val itemList: ArrayList<Item> = ArrayList()
 
@@ -44,7 +47,6 @@ class BellActivity : AppCompatActivity() {
             intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
         messageValue = intent.getStringExtra(BusRideBell.BUS_MESSAGE_KEY).toString()
         Log.d("intentvalue", "$passengerTypeValue $messageValue")
-
 
 
         //상단의 버스정류장 정보 박스
@@ -133,25 +135,28 @@ class BellActivity : AppCompatActivity() {
     }
 
 
-
     private fun sendUserRideBellData() {
 
         val rideBellService = RetrofitClient.service
+        val rideBellData = RideBellData(
+            passengerTypeValue,
+            messageValue,
+            busNumValue,
+            busStopNum
+        )
         val call = rideBellService.sendUserRideBellData(
-            RideBellData(
-                passengerTypeValue,
-                messageValue,
-                busNumValue,
-                busStopName
-            )
+            rideBellData
         )
         call.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 // 성공적으로 서버로 데이터 전송이 완료됨
                 if (response.isSuccessful) {
+                    val responseBody = response.body()?.string()
+                    responseId = responseBody?.trim()?.toLongOrNull() ?: 0
                     Log.d("serverresponse", "성공적으로 보내졌습니다")
+                    Log.d("serverresponse", responseId.toString())
 
-                    Log.d("busNum",busNumValue)
+
                 } else {
                     Log.d("serverresponse", "안 갔음 데이터")
                 }
@@ -168,6 +173,7 @@ class BellActivity : AppCompatActivity() {
         intent.putExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY, passengerTypeValue)
         intent.putExtra(BusRideBell.BUS_NUM_VALUE_KEY, busNumValue)
         intent.putExtra("busStopName", busStopName)
+        intent.putExtra("responseId", responseId)
         startActivity(intent)
     }
 }
