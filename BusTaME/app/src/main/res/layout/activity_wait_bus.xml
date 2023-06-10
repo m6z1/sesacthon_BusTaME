@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/busStopName"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -50,16 +50,17 @@
         app:cpb_progressbar_width="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/busStopName" />
 
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/busNum"
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_marginTop="68dp"
         android:background="@drawable/radius"
         android:backgroundTint="@color/btnGreen"
+        android:clickable="false"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -89,6 +90,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/radius"
         android:backgroundTint="@color/bustame_black"
+        android:clickable="false"
         android:paddingHorizontal="24dp"
         android:textColor="@color/white"
         android:textSize="20sp"
