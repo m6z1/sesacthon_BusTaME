@@ -17,7 +17,7 @@ class WaitBus : AppCompatActivity() {
         setContentView(binding.root)
 
         //인텐트값 받기
-        busNum = intent.getStringExtra("busNum").toString()
+        busNum = intent.getStringExtra(BusRideBell.BUS_NUM_VALUE_KEY).toString()
         busStopName = intent.getStringExtra("busStopName").toString()
 
         binding.busStopName.text = busStopName
