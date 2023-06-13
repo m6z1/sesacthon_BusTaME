@@ -34,7 +34,7 @@ data class Item(
     val stationNm1: String, //버스 정류장 이름
     val sectOrd2: String,
     val stationTp: String,
-    val rerdieDiv1: String,
+    val rerdieDiv1: String, //재차 여부
     val nxtStn: String, //다음 정류장 이름
     val rerdieDiv2: String,
     val sectOrd1: String,

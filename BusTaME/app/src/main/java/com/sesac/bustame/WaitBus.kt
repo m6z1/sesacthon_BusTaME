@@ -22,6 +22,7 @@ class WaitBus : AppCompatActivity() {
     private lateinit var busStopName: String
     private lateinit var busStopNum: String
     private lateinit var busArriveInfo: String
+    private lateinit var busFull : String
     private lateinit var itemAdapter: ItemAdapter
 
     private var responseId : Long = 0
@@ -109,8 +110,13 @@ class WaitBus : AppCompatActivity() {
                         for (item in newItemList) {
                             if (busNum == item.busRouteAbrv) {
                                 this@WaitBus.busArriveInfo = item.arrmsg1
-
+                                this@WaitBus.busFull = item.rerdieDiv1
                                 binding.busArriveTime.text = this@WaitBus.busArriveInfo
+
+                                // 값이 2일 경우 여유로 뜨게
+                                if (this@WaitBus.busFull == "2") {
+                                    binding.busFull.text = "여유"
+                                }
 
                                 // 버스가 도착했을 때 버튼 숨기기
                                 if (this@WaitBus.busArriveInfo == "곧 도착") {
@@ -122,6 +128,7 @@ class WaitBus : AppCompatActivity() {
 
                                 break
                             }
+
                         }
 
                         if (!::itemAdapter.isInitialized) {

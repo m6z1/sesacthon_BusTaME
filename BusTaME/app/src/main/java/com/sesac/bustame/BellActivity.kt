@@ -141,6 +141,7 @@ class BellActivity : AppCompatActivity() {
                     val newResponseId = responseBody?.trim()?.toLongOrNull()
                     if(newResponseId != null) {
                         responseId = newResponseId
+                        navigateToNextActivity(responseId)
 
                     }
                     Log.d("serverresponse", "성공적으로 보내졌습니다")
@@ -248,7 +249,6 @@ class BellActivity : AppCompatActivity() {
         alertDialogBuilder.setPositiveButton("예") { dialog: DialogInterface, _: Int ->
             busNumValue = selectedBusNum
             sendUserRideBellData()
-            navigateToNextActivity(responseId)
             dialog.dismiss() // 다이얼로그 닫기
         }
         alertDialogBuilder.setNegativeButton("취소") { dialog: DialogInterface, _: Int ->
