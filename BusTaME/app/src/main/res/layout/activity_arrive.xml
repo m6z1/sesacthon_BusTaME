@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_bus_ride_bell"
+    android:background="@drawable/background_bus_bell"
     tools:context=".ArriveActivity">
 
     <TextView
