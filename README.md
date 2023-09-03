@@ -14,7 +14,7 @@
 - Back Dev : [조영우](https://github.com/Zero-woo)
 
 ### Tech Stack
-`Kotlin` `Retrofit2` `gson` `KakaoMapAPI` 
+`Kotlin` `Retrofit2` `gson` `KakaoMapAPI` `MVC`
 
 
 **23-2 졸업작품으로 고도화 및 리팩토링 진행 예정이며 새로운 레파지토리에 업로드 예정**
