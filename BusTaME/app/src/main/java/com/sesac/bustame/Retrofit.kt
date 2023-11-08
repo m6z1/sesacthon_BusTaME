@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val URL = "http://52.3.106.119:8080/"
+    private const val URL = "http://44.194.24.26:8080/"
 
     var gson = GsonBuilder().setLenient().create()
     private val retrofit = Retrofit.Builder()

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 class ItemAdapter(
     private val itemList: List<Item>,
     private val passengerTypeValue: String,
-    private val messageValue: String
+    private val messageValue: String,
 ) :
     RecyclerView.Adapter<ItemAdapter.BusInfoViewHolder>() {
 
@@ -36,11 +36,9 @@ class ItemAdapter(
                 selectedPosition = holder.adapterPosition
                 notifyDataSetChanged()
             }
-
         }
 
         holder.radioButton.isChecked = selectedPosition == holder.adapterPosition
-
     }
 
     override fun getItemCount(): Int {
@@ -54,7 +52,6 @@ class ItemAdapter(
             ""
         }
     }
-
 
     inner class BusInfoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val busNum: TextView = itemView.findViewById(R.id.busNum)
@@ -71,7 +68,6 @@ class ItemAdapter(
                     val item = itemList[adapterPosition]
                     val isLast = item.isLast1
 
-
                     if (item.isLast1 == "1") {
                         radioButton.isEnabled = false
                         notifyDataSetChanged()
@@ -86,7 +82,6 @@ class ItemAdapter(
                     }
                     selectedPosition = RecyclerView.NO_POSITION
                 }
-
             }
 
             itemView.setOnClickListener {
@@ -129,5 +124,4 @@ class ItemAdapter(
             }
         }
     }
-
 }

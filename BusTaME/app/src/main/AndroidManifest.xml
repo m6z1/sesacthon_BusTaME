@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.sesac.bustame">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -64,7 +63,7 @@
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="6e979c88934d3f128cda09dd33573269" />
+            android:value="d9a094e074ea3db92ff2658250e21750" />
     </application>
 
 </manifest>

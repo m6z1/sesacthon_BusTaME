@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
     private lateinit var locationJson: JsonObject
     private var tmX: String? = null
     private var tmY: String? = null
-    private var radius: String = "300"
+    private var radius: String = "100"
 
     private lateinit var busStopNum: String
     private lateinit var busStopName: String

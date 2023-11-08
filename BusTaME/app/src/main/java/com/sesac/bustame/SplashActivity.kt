@@ -1,9 +1,9 @@
 package com.sesac.bustame
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 import com.sesac.bustame.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity() {
@@ -34,5 +34,4 @@ class SplashActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
     }
-
 }
