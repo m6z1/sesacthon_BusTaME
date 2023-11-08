@@ -16,5 +16,6 @@
 ### Tech Stack
 `Kotlin` `Retrofit2` `gson` `KakaoMapAPI` `MVC`
 
+---
 
-**23-2 졸업작품으로 고도화 및 리팩토링 진행 예정이며 새로운 레파지토리에 업로드 예정**
+> ### 고도화 및 리팩토링이 궁금하다면 ? [버스타미 졸업작품 보러가기](https://github.com/BUS-TAM-E/BusTAME-Android)
