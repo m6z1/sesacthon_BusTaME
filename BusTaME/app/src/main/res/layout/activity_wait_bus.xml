@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_bus_bell"
-    tools:context=".WaitBus">
+    tools:context=".feature.WaitBus">
 
     <TextView
         android:id="@+id/intro"
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:textColor="@color/bustame_black"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
         android:layout_marginTop="20dp"
         app:cpb_progress="100"
         app:cpb_progress_direction="to_right"
-        app:cpb_progressbar_color="@color/btnGreen"
+        app:cpb_progressbar_color="@color/green_58D78F"
         app:cpb_progressbar_width="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="68dp"
         android:background="@drawable/radius"
-        android:backgroundTint="@color/bustame_blue"
+        android:backgroundTint="@color/blue_2A9AF2"
         android:clickable="false"
         android:padding="4dp"
         android:textColor="@color/white"
@@ -88,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="@drawable/radius"
-        android:backgroundTint="@color/btnGreen"
+        android:backgroundTint="@color/green_58D78F"
         android:clickable="false"
         android:paddingHorizontal="24dp"
         android:textColor="@color/white"
@@ -120,7 +120,7 @@
         android:layout_width="0dp"
         android:layout_height="72dp"
         android:background="@drawable/radius"
-        android:backgroundTint="@color/btnGreen"
+        android:backgroundTint="@color/green_58D78F"
         android:text="승차벨 취소하기"
         android:textColor="@color/white"
         android:textSize="24sp"

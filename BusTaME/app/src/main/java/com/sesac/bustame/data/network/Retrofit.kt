@@ -1,4 +1,4 @@
-package com.sesac.bustame
+package com.sesac.bustame.data.network
 
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit

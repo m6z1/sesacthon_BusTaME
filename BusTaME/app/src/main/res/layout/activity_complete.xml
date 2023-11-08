@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CompleteActivity">
+    tools:context=".feature.CompleteActivity">
 
     <ImageView
         android:id="@+id/setRate"
@@ -50,7 +50,7 @@
         android:layout_height="68dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/radius"
-        android:backgroundTint="@color/btnGreen"
+        android:backgroundTint="@color/green_58D78F"
         android:text="@string/complete_btn_final"
         android:textColor="@color/white"
         android:textSize="20sp"

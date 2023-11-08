@@ -1,4 +1,4 @@
-package com.sesac.bustame
+package com.sesac.bustame.feature
 
 import android.content.DialogInterface
 import android.content.Intent
@@ -8,13 +8,16 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
 import com.google.gson.JsonObject
-import com.google.gson.JsonPrimitive
+import com.sesac.bustame.data.model.BusArriveInfo
+import com.sesac.bustame.BusRideBell
+import com.sesac.bustame.data.model.Item
+import com.sesac.bustame.R
+import com.sesac.bustame.data.network.RetrofitClient
+import com.sesac.bustame.data.model.RideBellData
 import com.sesac.bustame.databinding.ActivityBellBinding
 import okhttp3.ResponseBody
 import retrofit2.Call

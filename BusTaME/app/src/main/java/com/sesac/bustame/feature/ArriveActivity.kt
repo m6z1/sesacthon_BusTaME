@@ -1,22 +1,22 @@
-package com.sesac.bustame
+package com.sesac.bustame.feature
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.sesac.bustame.databinding.ActivityBusArriveBinding
+import com.sesac.bustame.R
+import com.sesac.bustame.databinding.ActivityArriveBinding
 
-class BusArriveActivity : AppCompatActivity() {
+class ArriveActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityBusArriveBinding
+    private lateinit var binding: ActivityArriveBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityBusArriveBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_arrive)
 
         Handler().postDelayed({
             startStartActivity()
-        }, BusArriveActivity.DURATION)
+        }, DURATION)
     }
 
     private fun startStartActivity() {

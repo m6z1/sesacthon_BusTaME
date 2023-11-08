@@ -1,8 +1,11 @@
-package com.sesac.bustame
+package com.sesac.bustame.feature
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.sesac.bustame.BusRideBell
+import com.sesac.bustame.data.model.RideBellData
+import com.sesac.bustame.data.network.RideBellDataManager
 import com.sesac.bustame.databinding.ActivitySetUserCategoryBinding
 
 class SetUserCategory : AppCompatActivity() {

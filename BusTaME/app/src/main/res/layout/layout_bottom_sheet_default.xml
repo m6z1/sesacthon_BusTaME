@@ -31,7 +31,7 @@
         android:background="@drawable/find_checkbusstop"
         android:paddingHorizontal="12dp"
         android:text="내 주변 정류장 확인하기"
-        android:textColor="@color/bustame_green"
+        android:textColor="@color/green_58D78F"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/bottomSheetTop"

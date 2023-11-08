@@ -54,7 +54,7 @@
         android:layout_height="52dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/radius"
-        android:backgroundTint="@color/bustame_green"
+        android:backgroundTint="@color/green_58D78F"
         android:layout_marginBottom="40dp"
         android:paddingHorizontal="20dp"
         android:text="승차벨 누르러 가기"

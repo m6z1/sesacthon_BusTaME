@@ -1,6 +1,10 @@
-package com.sesac.bustame
+package com.sesac.bustame.data.network
 
 import com.google.gson.JsonObject
+import com.sesac.bustame.data.model.BusArriveInfo
+import com.sesac.bustame.data.model.ItemList
+import com.sesac.bustame.data.model.LocationInfo
+import com.sesac.bustame.data.model.RideBellData
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body

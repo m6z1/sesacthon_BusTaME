@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BellActivity">
+    tools:context=".feature.BellActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -83,7 +83,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:background="@drawable/radius"
-            android:backgroundTint="@color/bustame_black"
+            android:backgroundTint="@color/black"
             android:paddingHorizontal="8dp"
             android:paddingVertical="20dp"
             android:paddingStart="52dp"

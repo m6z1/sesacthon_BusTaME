@@ -1,4 +1,4 @@
-package com.sesac.bustame
+package com.sesac.bustame.feature
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -10,13 +10,17 @@ import net.daum.mf.map.api.MapView
 import android.Manifest
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.JsonObject
+import com.sesac.bustame.BusRideBell
+import com.sesac.bustame.data.model.ItemList
+import com.sesac.bustame.data.model.LocationInfo
+import com.sesac.bustame.R
+import com.sesac.bustame.data.network.RetrofitClient
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapView.CurrentLocationEventListener

@@ -1,4 +1,4 @@
-package com.sesac.bustame
+package com.sesac.bustame.feature
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,6 +9,8 @@ import android.widget.RadioButton
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.sesac.bustame.data.model.Item
+import com.sesac.bustame.R
 
 class ItemAdapter(
     private val itemList: List<Item>,

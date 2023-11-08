@@ -1,4 +1,4 @@
-package com.sesac.bustame
+package com.sesac.bustame.data.model
 
 data class ItemList(
     val itemList: List<AroundBusStop>

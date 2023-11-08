@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".StartActivity">
+    tools:context=".feature.StartActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_logo"
@@ -40,7 +40,7 @@
         android:textColor="@color/white"
         android:textSize="32sp"
         android:textStyle="bold"
-        android:backgroundTint="@color/btnGreen"
+        android:backgroundTint="@color/green_58D78F"
         android:layout_marginBottom="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

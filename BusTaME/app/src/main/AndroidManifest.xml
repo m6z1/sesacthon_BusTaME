@@ -18,41 +18,43 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".BusArriveActivity"
+        <activity android:name=".feature.PermissionActivity"
             android:exported="false" />
         <activity
-            android:name=".ArriveActivity"
+            android:name=".feature.BusArriveActivity"
             android:exported="false" />
         <activity
-            android:name=".WaitBus"
+            android:name=".feature.ArriveActivity"
             android:exported="false" />
         <activity
-            android:name=".CompleteActivity"
+            android:name=".feature.WaitBus"
             android:exported="false" />
         <activity
-            android:name=".SetUserToDelivery"
+            android:name=".feature.CompleteActivity"
             android:exported="false" />
         <activity
-            android:name=".SetUserCategory"
+            android:name=".feature.SetUserToDelivery"
+            android:exported="false" />
+        <activity
+            android:name=".feature.SetUserCategory"
             android:exported="false" />
         <activity
             android:name=".SetUserOccupants"
             android:exported="false" />
         <activity
-            android:name=".BellActivity"
+            android:name=".feature.BellActivity"
             android:exported="false" />
         <activity
-            android:name=".StartActivity"
+            android:name=".feature.StartActivity"
             android:exported="false" />
         <activity
             android:name=".TestActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".feature.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".feature.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

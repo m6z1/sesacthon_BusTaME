@@ -1,7 +1,8 @@
-package com.sesac.bustame
+package com.sesac.bustame.data.network
 
 import android.content.Context
 import com.google.gson.Gson
+import com.sesac.bustame.data.model.RideBellData
 
 object RideBellDataManager {
     private const val PREFERENCES_KEY = "RideBellDataPref"
