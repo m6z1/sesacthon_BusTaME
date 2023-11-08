@@ -105,7 +105,7 @@ class ItemAdapter(
                 busType.setTextColor(ContextCompat.getColor(itemView.context, R.color.black))
             } else {
                 busType.text = "저상버스"
-                busType.setTextColor(ContextCompat.getColor(itemView.context, R.color.bustame_red))
+                busType.setTextColor(ContextCompat.getColor(itemView.context, R.color.red_FC482F))
             }
             when (item.routeType) {
                 "2", "4" -> {
