@@ -3,12 +3,31 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!--버스타미 공식색 RGBB-->
-    <color name="bustame_green">#1BC866</color>
-    <color name="bustame_red">#FF4123</color>
-    <color name="bustame_blue">#1F85EA</color>
-    <color name="bustame_black">#575757</color>
+    <!--signature-->
+    <color name="black_575757">#575757</color>
+    <color name="gray_808080">#808080</color>
+    <!--green-->
+    <color name="green_8BF1B7">#8BF1B7</color>
+    <color name="green_6DEDA5">#6DEDA5</color>
+    <color name="green_58D78F">#58D78F</color>
+    <color name="green_00CC59">#00CC59</color>
+    <color name="green_1BC866">#1BC866</color>
 
+    <!--red-->
+    <color name="red_FCC3BB">#FCC3BB</color>
+    <color name="red_FF7461">#FF7461</color>
+    <color name="red_FC482F">#FC482F</color>
+    <color name="red_FF1F00">#FF1F00</color>
 
-    <color name="btnGreen">#58D78F</color>
+    <!--blue-->
+    <color name="blue_9AD2FE">#9AD2FE</color>
+    <color name="blue_59B1F8">#59B1F8</color>
+    <color name="blue_2A9AF2">#2A9AF2</color>
+    <color name="blue_0087F2">#0087F2</color>
+
+    <!--yellow-->
+    <color name="yellow_FFF3A5">#FFF3A5</color>
+    <color name="yellow_FCE96F">#FCE96F</color>
+    <color name="yellow_FFE641">#FFE641</color>
+    <color name="yellow_FFE014">#FFE014</color>
 </resources>
