@@ -46,5 +46,7 @@
     <string name="permission_location_explain">지도맵 내 현재 위치 확인</string>
     <string name="onboarding_first">버스가 그냥 지나쳐가서\n마음이 쓸쓸했나요?</string>
     <string name="onboarding_second">이제 그런 일은 없습니다.</string>
+    <string name="login_title">버스타미</string>
+    <string name="login_description">버스타미가 안전한 버스 탑승을 도울게요!</string>
 
 </resources>

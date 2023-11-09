@@ -1,8 +1,8 @@
 package com.sesac.bustame.feature
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.sesac.bustame.databinding.ActivityStartBinding
 
 class StartActivity : AppCompatActivity() {
@@ -14,7 +14,6 @@ class StartActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnNext.setOnClickListener {
-
             navigateToNextActivity()
             /*
             val alertDialog = AlertDialog.Builder(this)
@@ -26,12 +25,10 @@ class StartActivity : AppCompatActivity() {
             alertDialog.show()
         }
              */
-
         }
-
     }
 
-    fun navigateToNextActivity() {
+    private fun navigateToNextActivity() {
         val intent = Intent(this, SetUserCategory::class.java)
         startActivity(intent)
     }

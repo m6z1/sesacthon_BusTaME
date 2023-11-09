@@ -6,6 +6,9 @@
     <!--signature-->
     <color name="black_575757">#575757</color>
     <color name="gray_808080">#808080</color>
+
+    <!--black-->
+    <color name="black_191919">#191919</color>
     <!--green-->
     <color name="green_8BF1B7">#8BF1B7</color>
     <color name="green_6DEDA5">#6DEDA5</color>

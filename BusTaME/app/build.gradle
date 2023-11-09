@@ -67,7 +67,4 @@ dependencies {
     //CardView
     implementation 'androidx.cardview:cardview:1.0.0'
 
-    //인디케이터
-    implementation 'com.tbuonomo:dotsindicator:5.0'
-
 }

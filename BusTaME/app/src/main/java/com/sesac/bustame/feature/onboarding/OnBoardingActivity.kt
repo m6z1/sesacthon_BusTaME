@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.sesac.bustame.R
-import com.sesac.bustame.feature.PermissionActivity
+import com.sesac.bustame.feature.login.LoginActivity
 
 class OnBoardingActivity : AppCompatActivity() {
 
@@ -110,7 +110,7 @@ class OnBoardingActivity : AppCompatActivity() {
             if (onboardingViewPager.currentItem < bindingAdapter.itemCount - 1) {
                 onboardingViewPager.currentItem += 1
             } else {
-                val intent = Intent(this, PermissionActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
             }
