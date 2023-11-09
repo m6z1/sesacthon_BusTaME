@@ -46,6 +46,7 @@
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="@font/medium"
+        android:foreground="?android:attr/selectableItemBackground"
         android:gravity="center"
         android:text="다음"
         android:textColor="@color/white"
