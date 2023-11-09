@@ -31,8 +31,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/v_empty"
-        app:selectedDotColor="@color/green_58D78F" />
+        app:layout_constraintTop_toBottomOf="@+id/v_empty" />
 
     <TextView
         android:id="@+id/btnSplash"
