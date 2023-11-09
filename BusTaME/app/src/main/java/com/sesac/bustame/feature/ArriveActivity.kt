@@ -1,12 +1,11 @@
 package com.sesac.bustame.feature
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 import com.sesac.bustame.R
 import com.sesac.bustame.databinding.ActivityArriveBinding
-
 class ArriveActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityArriveBinding

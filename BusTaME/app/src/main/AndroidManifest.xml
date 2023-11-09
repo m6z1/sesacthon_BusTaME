@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".feature.PermissionActivity"
+        <activity
+            android:name=".feature.PermissionActivity"
             android:exported="false" />
         <activity
             android:name=".feature.BusArriveActivity"
@@ -39,20 +40,17 @@
             android:name=".feature.SetUserCategory"
             android:exported="false" />
         <activity
-            android:name=".SetUserOccupants"
-            android:exported="false" />
-        <activity
             android:name=".feature.BellActivity"
             android:exported="false" />
         <activity
             android:name=".feature.StartActivity"
             android:exported="false" />
         <activity
-            android:name=".TestActivity"
-            android:exported="false" />
-        <activity
             android:name=".feature.MainActivity"
             android:exported="true" />
+        <activity
+            android:name=".feature.onboarding.OnBoardingActivity"
+            android:exported="false" />
         <activity
             android:name=".feature.SplashActivity"
             android:exported="true">

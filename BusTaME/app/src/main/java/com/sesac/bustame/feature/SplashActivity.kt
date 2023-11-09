@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.sesac.bustame.databinding.ActivitySplashBinding
+import com.sesac.bustame.feature.onboarding.OnBoardingActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -21,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startStartActivity() {
-        val intent = Intent(this, StartActivity::class.java)
+        val intent = Intent(this, OnBoardingActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
         startActivity(intent)
         finish()
