@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_bus_bell"
     tools:context=".feature.WaitBus">
 
     <TextView
@@ -12,12 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="36dp"
+        android:fontFamily="@font/bold"
         android:paddingHorizontal="20dp"
         android:text="기사님께\n승차를 요청했어요!"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="32sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,37 +31,36 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/intro"
+        app:layout_constraintTop_toBottomOf="@id/busNum"
         tools:text="동대문역사문화공원" />
 
     <com.mikhaellopez.circularprogressbar.CircularProgressBar
         android:id="@+id/circularProgressBar"
         android:layout_width="360dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="48dp"
         app:cpb_progress="100"
         app:cpb_progress_direction="to_right"
         app:cpb_progressbar_color="@color/green_58D78F"
         app:cpb_progressbar_width="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/busStopName" />
+        app:layout_constraintTop_toBottomOf="@+id/intro" />
 
 
     <Button
         android:id="@+id/busNum"
         android:layout_width="160dp"
         android:layout_height="40dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="56dp"
         android:background="@drawable/radius"
         android:backgroundTint="@color/blue_2A9AF2"
         android:clickable="false"
         android:padding="4dp"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/circularProgressBar"
-        app:layout_constraintStart_toStartOf="@id/circularProgressBar"
+        app:layout_constraintEnd_toEndOf="@+id/circularProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/circularProgressBar"
         app:layout_constraintTop_toTopOf="@+id/circularProgressBar"
         tools:text="160번 버스" />
 
@@ -105,26 +103,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="버스 내부가 혼잡할 경우\n 탑승이 불가할 수도 있어요."
+        android:fontFamily="@font/medium"
+        android:text="버스 내부가 혼잡할 경우, 탑승이 불가할 수도 있어요.\n다음 버스의 승차벨을 누르는게 어때요?"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/circularProgressBar" />
 
 
-    <Button
+    <TextView
         android:id="@+id/btnCancel"
-        android:layout_width="0dp"
-        android:layout_height="72dp"
-        android:background="@drawable/radius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_round_10"
         android:backgroundTint="@color/green_58D78F"
-        android:text="승차벨 취소하기"
+        android:drawableStart="@drawable/ic_green_bell_bot"
+        android:drawableTint="@color/white"
+        android:fontFamily="@font/bold"
+        android:paddingHorizontal="96dp"
+        android:paddingVertical="18dp"
+        android:text="승차벨 울리기"
         android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/circularProgressBar"
         app:layout_constraintStart_toStartOf="@+id/circularProgressBar"

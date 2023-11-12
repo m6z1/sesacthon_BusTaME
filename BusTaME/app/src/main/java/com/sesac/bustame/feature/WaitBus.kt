@@ -2,15 +2,15 @@ package com.sesac.bustame.feature
 
 import android.animation.ValueAnimator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.JsonObject
-import com.sesac.bustame.data.model.BusArriveInfo
 import com.sesac.bustame.BusRideBell
+import com.sesac.bustame.data.model.BusArriveInfo
 import com.sesac.bustame.data.model.Item
 import com.sesac.bustame.data.network.RetrofitClient
 import com.sesac.bustame.databinding.ActivityWaitBusBinding
@@ -26,10 +26,10 @@ class WaitBus : AppCompatActivity() {
     private lateinit var busStopName: String
     private lateinit var busStopNum: String
     private lateinit var busArriveInfo: String
-    private lateinit var busFull : String
+    private lateinit var busFull: String
     private lateinit var itemAdapter: ItemAdapter
 
-    private var responseId : Long = 0
+    private var responseId: Long = 0
 
     private lateinit var passengerTypeValue: String
     private lateinit var messageValue: String
@@ -41,13 +41,12 @@ class WaitBus : AppCompatActivity() {
     private var isCountDownStarted = false
     private val countdownDuration = 30000
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWaitBusBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //인텐트값 받기
+        // 인텐트값 받기
         busNum = intent.getStringExtra(BusRideBell.BUS_NUM_VALUE_KEY).toString()
         busStopName = intent.getStringExtra("busStopName").toString()
         responseId = intent.getLongExtra("responseId", 0)
@@ -66,7 +65,7 @@ class WaitBus : AppCompatActivity() {
             service.deleteUserRideBellData(responseId).enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(
                     call: Call<ResponseBody>,
-                    response: Response<ResponseBody>
+                    response: Response<ResponseBody>,
                 ) {
                     if (response.isSuccessful) {
                         finish()
@@ -132,11 +131,14 @@ class WaitBus : AppCompatActivity() {
 
                                 break
                             }
-
                         }
 
                         if (!::itemAdapter.isInitialized) {
-                            itemAdapter = ItemAdapter(itemList, messageValue, passengerTypeValue) // itemAdapter 초기화
+                            itemAdapter = ItemAdapter(
+                                itemList,
+                                messageValue,
+                                passengerTypeValue,
+                            ) // itemAdapter 초기화
                         } else {
                             itemAdapter.notifyDataSetChanged()
                         }
