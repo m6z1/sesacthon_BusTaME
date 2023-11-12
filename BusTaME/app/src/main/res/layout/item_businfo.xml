@@ -5,31 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="100dp">
 
-    <RadioButton
-        android:id="@+id/selectBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-
     <ImageView
         android:id="@+id/ic_bus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:src="@drawable/ic_bus_blue"
-        app:layout_constraintStart_toEndOf="@+id/selectBtn"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/busNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="10dp"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -41,9 +31,9 @@
         android:id="@+id/busNumNameNanum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="12dp"
         android:text="@string/busNumName"
-        android:textColor="@color/black"
+        android:textColor="@color/black_575757"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/busNum"
         app:layout_constraintStart_toEndOf="@id/busNum"
@@ -53,9 +43,10 @@
         android:id="@+id/busDirection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/regular"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@id/busNumNameNanum"
         app:layout_constraintStart_toEndOf="@id/busNumNameNanum"
         app:layout_constraintTop_toTopOf="@id/busNumNameNanum"
@@ -84,29 +75,26 @@
         app:layout_constraintTop_toBottomOf="@+id/ic_bus"
         tools:text="도봉산역광역환승센터 - 온수동종점" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" 방면"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/direction"
-        app:layout_constraintTop_toTopOf="@+id/direction" />
-
 
     <TextView
-        android:layout_marginTop="8dp"
         android:id="@+id/first_bus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:background="@drawable/ic_whenbusstop"
+        android:fontFamily="@font/medium"
+        android:gravity="center"
         android:paddingHorizontal="4dp"
-        android:textAlignment="center"
         android:textColor="@color/red_FC482F"
-        android:textSize="12sp"
+        android:textSize="10sp"
         app:layout_constraintStart_toStartOf="@+id/direction"
         app:layout_constraintTop_toBottomOf="@+id/direction"
         tools:text="곧 도착 (1정류장, 여유)" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#C0C0C0"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

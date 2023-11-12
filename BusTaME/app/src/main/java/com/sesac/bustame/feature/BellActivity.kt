@@ -2,22 +2,22 @@ package com.sesac.bustame.feature
 
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.JsonObject
-import com.sesac.bustame.data.model.BusArriveInfo
 import com.sesac.bustame.BusRideBell
-import com.sesac.bustame.data.model.Item
 import com.sesac.bustame.R
-import com.sesac.bustame.data.network.RetrofitClient
+import com.sesac.bustame.data.model.BusArriveInfo
+import com.sesac.bustame.data.model.Item
 import com.sesac.bustame.data.model.RideBellData
+import com.sesac.bustame.data.network.RetrofitClient
 import com.sesac.bustame.databinding.ActivityBellBinding
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -57,13 +57,15 @@ class BellActivity : AppCompatActivity() {
         messageValue = intent.getStringExtra(BusRideBell.BUS_MESSAGE_KEY).toString()
         Log.d("intentvalue", "$passengerTypeValue $messageValue")
 
-
-        //상단의 버스정류장 정보 박스
-        binding.busStopNum.text = busStopNum
+        // 상단의 버스정류장 정보 박스
         binding.busStopName.text = busStopName
 
         binding.button.setOnClickListener {
             showPopupDialog()
+        }
+
+        binding.icBack.setOnClickListener {
+            finish()
         }
 
         // 통신해서 버스 정보 받아오기
@@ -82,7 +84,6 @@ class BellActivity : AppCompatActivity() {
                         itemList.clear()
                         itemList.addAll(newItemList)
                         itemAdapter.notifyDataSetChanged()
-
 
                         Log.d("serverresponse", "success")
                         Log.d("serverresponse", itemList.toString())
@@ -106,10 +107,7 @@ class BellActivity : AppCompatActivity() {
         itemAdapter = ItemAdapter(itemList, passengerTypeValue, messageValue)
         binding.busRecyclerView.adapter = itemAdapter
         binding.busRecyclerView.layoutManager = LinearLayoutManager(this)
-
     }
-
-
 
     // 툴바 띄우기
     private fun setCustomToolbar(layout: Int) {
@@ -123,18 +121,16 @@ class BellActivity : AppCompatActivity() {
         finish()
     }
 
-
     private fun sendUserRideBellData() {
-
         val rideBellService = RetrofitClient.service
         val rideBellData = RideBellData(
             passengerTypeValue,
             messageValue,
             busNumValue,
-            busStopNum
+            busStopNum,
         )
         val call = rideBellService.sendUserRideBellData(
-            rideBellData
+            rideBellData,
         )
         call.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
@@ -142,15 +138,12 @@ class BellActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val responseBody = response.body()?.string()
                     val newResponseId = responseBody?.trim()?.toLongOrNull()
-                    if(newResponseId != null) {
+                    if (newResponseId != null) {
                         responseId = newResponseId
                         navigateToNextActivity(responseId)
-
                     }
                     Log.d("serverresponse", "성공적으로 보내졌습니다")
                     Log.d("serverresponse", responseId.toString())
-
-
                 } else {
                     Log.d("serverresponse", "안 갔음 데이터")
                 }
@@ -162,7 +155,7 @@ class BellActivity : AppCompatActivity() {
         })
     }
 
-    private fun navigateToNextActivity(responseId : Long) {
+    private fun navigateToNextActivity(responseId: Long) {
         val intent = Intent(this, WaitBus::class.java)
         intent.putExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY, passengerTypeValue)
         intent.putExtra(BusRideBell.BUS_NUM_VALUE_KEY, busNumValue)
@@ -223,7 +216,6 @@ class BellActivity : AppCompatActivity() {
                         itemList.addAll(newItemList)
                         itemAdapter.notifyDataSetChanged()
 
-
                         Log.d("serverresponse", "success")
                         Log.d("serverresponse", itemList.toString())
                     } else {
@@ -260,6 +252,5 @@ class BellActivity : AppCompatActivity() {
 
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()
-
     }
 }

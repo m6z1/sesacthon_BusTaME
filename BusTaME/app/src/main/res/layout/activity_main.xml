@@ -28,6 +28,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
         android:src="@drawable/ic_searchbus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +47,7 @@
         android:backgroundTint="@color/white"
         android:clickable="true"
         android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
         android:src="@drawable/ic_my_location"
         app:layout_constraintBottom_toTopOf="@id/bot_nav"
         app:layout_constraintEnd_toEndOf="parent" />

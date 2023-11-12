@@ -238,7 +238,7 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
         val bottomSheetView = layoutInflater.inflate(R.layout.layout_bottom_sheet_businfo, null)
         val busStopNumTextView = bottomSheetView.findViewById<TextView>(R.id.busStopNum)
         val busStopNameTextView = bottomSheetView.findViewById<TextView>(R.id.busStopName)
-        val btnGoBusBell = bottomSheetView.findViewById<Button>(R.id.btnGoBusBell)
+        val btnGoBusBell = bottomSheetView.findViewById<TextView>(R.id.btnGoBusBell)
 
         // 아래 코드 추가
         val itemList = responseData!!.itemList ?: emptyList()

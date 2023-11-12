@@ -6,111 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".feature.BellActivity">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/custom_actionbar" />
+    <ImageView
+        android:id="@+id/ic_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintBottom_toBottomOf="@+id/busStopName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/busStopName" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/busStopInfoBox"
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:src="@drawable/background_bell"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/busStopNum"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginTop="32dp"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="17008" />
-
-        <TextView
-            android:id="@+id/busStopName"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginTop="12dp"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/busStopNum"
-            tools:text="동양미래대학교. 구로성심병원(중)" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ScrollView
-        android:id="@+id/busInfoBox"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
+    <TextView
+        android:id="@+id/busStopName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bold"
+        android:gravity="center"
+        android:paddingVertical="16dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/busStopInfoBox">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="동양미래대학교. 구로성심병원(중)" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/busRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/busStopInfoBox"
-            tools:listitem="@layout/item_businfo" />
 
-    </ScrollView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/busRecyclerView"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/busStopName"
+        tools:listitem="@layout/item_businfo" />
+
+    <TextView
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+          android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_round_10"
+        android:backgroundTint="#D6F1E2"
+        android:drawableStart="@drawable/ic_green_bell_bot"
+        android:drawableTint="@color/white"
+        android:fontFamily="@font/bold"
+        android:paddingHorizontal="96dp"
+        android:paddingVertical="18dp"
+        android:text="승차벨 울리기"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/busInfoBox">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/radius"
-            android:backgroundTint="@color/black"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="20dp"
-            android:paddingStart="52dp"
-            android:text="@string/btn_rideBell"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:elevation="4dp"
-            android:src="@drawable/ic_bell"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/button"
-            app:layout_constraintTop_toTopOf="@+id/button" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

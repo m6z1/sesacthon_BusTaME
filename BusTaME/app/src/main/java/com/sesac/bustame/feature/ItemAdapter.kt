@@ -1,25 +1,23 @@
 package com.sesac.bustame.feature
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RadioButton
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.sesac.bustame.data.model.Item
 import com.sesac.bustame.R
+import com.sesac.bustame.data.model.Item
 
 class ItemAdapter(
     private val itemList: List<Item>,
     private val passengerTypeValue: String,
     private val messageValue: String,
-) :
-    RecyclerView.Adapter<ItemAdapter.BusInfoViewHolder>() {
+    private val button: TextView
+) : RecyclerView.Adapter<ItemAdapter.BusInfoViewHolder>() {
 
-    private var selectedPosition = RecyclerView.NO_POSITION
+    private var selectedPosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BusInfoViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_businfo, parent, false)
@@ -30,21 +28,26 @@ class ItemAdapter(
         val item = itemList[position]
         holder.bind(item)
 
-        val isBusEnd = item.arrmsg1 == "운행종료"
-        holder.radioButton.isEnabled = !isBusEnd
-
-        holder.radioButton.setOnClickListener {
-            if (!isBusEnd) {
-                selectedPosition = holder.adapterPosition
-                notifyDataSetChanged()
+        holder.itemView.setOnClickListener {
+            val previousSelectedPosition = selectedPosition
+            if (selectedPosition != position && item.arrmsg1 != "운행종료") {
+                selectedPosition = position
+                notifyItemChanged(previousSelectedPosition)
+                notifyItemChanged(selectedPosition)
             }
         }
 
-        holder.radioButton.isChecked = selectedPosition == holder.adapterPosition
+        if (selectedPosition == position) {
+            holder.itemView.setBackgroundResource(R.color.green_E8F8EF)
+            button.setBackgroundResource(R.color.green_58D78F)
+        } else {
+            holder.itemView.setBackgroundResource(android.R.color.white)
+            button.setBackgroundResource(R.color.green_D6F1E2)
+        }
     }
 
     override fun getItemCount(): Int {
-        return itemList.count()
+        return itemList.size
     }
 
     fun getSelectedBusNum(): String {
@@ -60,39 +63,8 @@ class ItemAdapter(
         private val nextStn: TextView = itemView.findViewById(R.id.busDirection)
         private val busDirection: TextView = itemView.findViewById(R.id.direction)
         private val firstBus: TextView = itemView.findViewById(R.id.first_bus)
-        val radioButton: RadioButton = itemView.findViewById(R.id.selectBtn)
         private val busType: TextView = itemView.findViewById(R.id.busType)
-        val icBus: ImageView = itemView.findViewById(R.id.ic_bus)
-
-        init {
-            radioButton.setOnClickListener {
-                if (adapterPosition == selectedPosition) {
-                    val item = itemList[adapterPosition]
-                    val isLast = item.isLast1
-
-                    if (item.isLast1 == "1") {
-                        radioButton.isEnabled = false
-                        notifyDataSetChanged()
-                    } else {
-                        val selectedBusNum = itemList[adapterPosition].busRouteAbrv
-                        val intent = Intent(itemView.context, BellActivity::class.java).apply {
-                            putExtra("busNum", selectedBusNum)
-                            putExtra("passengerTypeValue", passengerTypeValue)
-                            putExtra("messageValue", messageValue)
-                        }
-                        itemView.context.startActivity(intent)
-                    }
-                    selectedPosition = RecyclerView.NO_POSITION
-                }
-            }
-
-            itemView.setOnClickListener {
-                if (adapterPosition == selectedPosition) {
-                    selectedPosition = RecyclerView.NO_POSITION
-                    notifyDataSetChanged()
-                }
-            }
-        }
+        private val icBus: ImageView = itemView.findViewById(R.id.ic_bus)
 
         fun bind(item: Item) {
             busNum.text = item.busRouteAbrv
@@ -107,6 +79,7 @@ class ItemAdapter(
                 busType.text = "저상버스"
                 busType.setTextColor(ContextCompat.getColor(itemView.context, R.color.red_FC482F))
             }
+
             when (item.routeType) {
                 "2", "4" -> {
                     icBus.setImageResource(R.drawable.ic_bus_green)
