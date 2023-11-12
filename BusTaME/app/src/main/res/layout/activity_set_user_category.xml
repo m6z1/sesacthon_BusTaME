@@ -6,139 +6,100 @@
     android:layout_height="match_parent"
     tools:context=".feature.SetUserCategory">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <ImageView
         android:id="@+id/setRate"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
+        android:foregroundGravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/category_rate" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <TextView
         android:id="@+id/categoryName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@id/setRate"
-        app:layout_constraintTop_toBottomOf="@id/setRate"
-        app:srcCompat="@drawable/category_name" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/categoryIntro"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        app:layout_constraintStart_toStartOf="@+id/categoryName"
-        app:layout_constraintTop_toBottomOf="@+id/categoryName"
-        app:srcCompat="@drawable/category_intro" />
-
-    <Button
-        android:id="@+id/btnDisabled"
-        android:layout_width="316dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/radius"
-        android:elevation="80dp"
-        android:text="@string/category_btn_disabled"
-        android:textColor="@color/green_58D78F"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryIntro" />
-
-    <Button
-        android:id="@+id/btnOld"
-        android:layout_width="316dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/radius"
-        android:elevation="80dp"
-        android:text="@string/category_btn_old"
-        android:textColor="@color/green_58D78F"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDisabled" />
-
-    <Button
-        android:id="@+id/btnPregnant"
-        android:layout_width="316dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/radius"
-        android:elevation="80dp"
-        android:text="@string/category_btn_pregnant"
-        android:textColor="@color/green_58D78F"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnOld" />
-
-    <Button
-        android:id="@+id/btnWithBaby"
-        android:layout_width="316dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/radius"
-        android:elevation="80dp"
-        android:text="@string/category_btn_with_baby"
-        android:textColor="@color/green_58D78F"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPregnant" />
-
-    <Button
-        android:id="@+id/btnWounded"
-        android:layout_width="316dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/radius"
-        android:elevation="80dp"
-        android:text="@string/category_btn_wounded"
-        android:textColor="@color/green_58D78F"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnWithBaby" />
-
-    <Button
-        android:id="@+id/btnElse"
-        android:layout_width="316dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/radius"
-        android:elevation="80dp"
-        android:text="@string/category_btn_else"
-        android:textColor="@color/green_58D78F"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnWounded" />
-
-    <Button
-        android:id="@+id/btnPrev"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/radius"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_round_20"
         android:backgroundTint="@color/green_58D78F"
-        android:elevation="100dp"
-        android:text="@string/btn_previous"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="6dp"
+        android:text="탑승자 유형"
         android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/setRate" />
+
+    <TextView
+        android:id="@+id/tv_category_pick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/semi_bold"
+        android:text="해당하는 탑승자 유형을\n선택해주세요."
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoryName" />
+
+    <TextView
+        android:id="@+id/tv_category_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/medium"
+        android:text="@string/category_description"
+        android:textAlignment="center"
+        android:textColor="@color/black_575757"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_category_pick" />
+
+    <TextView
+        android:id="@+id/btn_category_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_round_10"
+        android:clickable="true"
+        android:elevation="20dp"
+        android:focusable="true"
+        android:fontFamily="@font/semi_bold"
+        android:paddingHorizontal="52dp"
+        android:paddingVertical="62dp"
+        android:text="일반"
+        android:textColor="@color/green_58D78F"
         android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnElse"
-        app:layout_constraintStart_toStartOf="@+id/btnElse" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_category_description" />
+
+    <TextView
+        android:id="@+id/btn_category_disadvantage"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/bg_round_10"
+        android:clickable="true"
+        android:elevation="20dp"
+        android:focusable="true"
+        android:fontFamily="@font/semi_bold"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingHorizontal="36dp"
+        android:paddingVertical="62dp"
+        android:text="교통약자"
+        android:textColor="@color/green_58D78F"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_category_description" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

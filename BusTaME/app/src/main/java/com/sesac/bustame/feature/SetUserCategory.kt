@@ -1,8 +1,8 @@
 package com.sesac.bustame.feature
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.sesac.bustame.BusRideBell
 import com.sesac.bustame.data.model.RideBellData
 import com.sesac.bustame.data.network.RideBellDataManager
@@ -17,43 +17,14 @@ class SetUserCategory : AppCompatActivity() {
         binding = ActivitySetUserCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //이전 버튼을 눌렀을 때
-        binding.btnPrev.setOnClickListener {
-            finish()
-        }
-
-        binding.btnDisabled.setOnClickListener {
-            passengerTypeValue = "장애인"
+        binding.btnCategoryNormal.setOnClickListener {
+            passengerTypeValue = "일반"
             saveRideBellData()
             navigateToNextActivity()
         }
 
-        binding.btnOld.setOnClickListener {
-            passengerTypeValue = "고령자"
-            saveRideBellData()
-            navigateToNextActivity()
-        }
-
-        binding.btnPregnant.setOnClickListener {
-            passengerTypeValue = "임산부"
-            saveRideBellData()
-            navigateToNextActivity()
-        }
-
-        binding.btnWithBaby.setOnClickListener {
-            passengerTypeValue = "영유아를 동반한 사람"
-            saveRideBellData()
-            navigateToNextActivity()
-        }
-
-        binding.btnWounded.setOnClickListener {
-            passengerTypeValue = "부상자"
-            saveRideBellData()
-            navigateToNextActivity()
-        }
-
-        binding.btnElse.setOnClickListener {
-            passengerTypeValue = "기타"
+        binding.btnCategoryDisadvantage.setOnClickListener {
+            passengerTypeValue = "교통약자"
             saveRideBellData()
             navigateToNextActivity()
         }
@@ -70,7 +41,7 @@ class SetUserCategory : AppCompatActivity() {
             passengerType = passengerTypeValue,
             message = "",
             busNumber = "",
-            busStopNumber = ""
+            busStopNumber = "",
         )
         RideBellDataManager.saveRideBellData(rideBellData, this)
     }

@@ -4,46 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:context=".feature.StartActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_logo"
-        android:layout_width="176dp"
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/bustame_logo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/bold"
+        android:text="손명지님,"
+        android:textColor="@color/black"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/semi_bold"
+        android:text="버스타미와 함께 편리한 탑승해요!"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/name"
+        app:layout_constraintTop_toBottomOf="@id/name" />
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/medium"
+        android:text="간단한 설정을 통해 승차벨 서비스 이용을 도와드리겠습니다."
+        android:textColor="@color/black_575757"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/title1"
+        app:layout_constraintTop_toBottomOf="@id/title1" />
 
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_intro"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="28dp"
-        android:src="@drawable/bustame_introduce"
-        app:layout_constraintStart_toStartOf="@id/img_logo"
-        app:layout_constraintLeft_toLeftOf="@id/img_logo"
-        app:layout_constraintTop_toBottomOf="@+id/img_logo"
-        android:layout_marginStart="4dp"/>
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/ic_bustame_wink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title2" />
 
-    <Button
+    <TextView
         android:id="@+id/btnNext"
-        android:layout_width="350dp"
-        android:layout_height="76dp"
-        android:background="@drawable/radius"
-        android:text="@string/btn_start"
-        android:textColor="@color/white"
-        android:textSize="32sp"
-        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_round_10"
         android:backgroundTint="@color/green_58D78F"
-        android:layout_marginBottom="44dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/medium"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:paddingHorizontal="100dp"
+        android:paddingVertical="16dp"
+        android:text="설정하러 가기"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

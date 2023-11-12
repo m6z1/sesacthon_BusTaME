@@ -4,58 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".feature.SetUserToDelivery">
 
     <ImageView
         android:id="@+id/setRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/todelivery_rate"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/todeliver_rate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/todeliveryName"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:src="@drawable/todeliver_name"
-        app:layout_constraintStart_toStartOf="@+id/setRate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setRate" />
 
-    <ImageView
+    <TextView
         android:id="@+id/todeliveryIntro"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/todeliver_intro"
-        app:layout_constraintStart_toStartOf="@+id/setRate"
-        app:layout_constraintTop_toBottomOf="@+id/todeliveryName" />
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/semi_bold"
+        android:gravity="center"
+        android:text="버스 기사님께 남길\n승차 시 요청사항이 있나요?"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/todeliveryName" />
 
-    <Button
+    <TextView
         android:id="@+id/btnWait"
         android:layout_width="316dp"
         android:layout_height="60dp"
         android:layout_marginTop="40dp"
-        android:background="@drawable/radius"
-        android:elevation="80dp"
+        android:background="@drawable/bg_round_10"
+        android:clickable="true"
+        android:elevation="20dp"
+        android:focusable="true"
+        android:gravity="center"
         android:text="@string/todelivery_btn_wait"
         android:textColor="@color/green_58D78F"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/todeliveryIntro" />
+        app:layout_constraintTop_toBottomOf="@id/todeliveryIntro" />
 
-    <Button
+    <TextView
         android:id="@+id/btnChair"
         android:layout_width="316dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/radius"
-        android:elevation="80dp"
+        android:background="@drawable/bg_round_10"
+        android:clickable="true"
+        android:elevation="20dp"
+        android:focusable="true"
+        android:gravity="center"
         android:text="@string/todelivery_btn_chair"
         android:textColor="@color/green_58D78F"
         android:textSize="16sp"
@@ -64,13 +77,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnWait" />
 
-    <Button
+    <TextView
         android:id="@+id/btnBabycar"
         android:layout_width="316dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/radius"
-        android:elevation="80dp"
+        android:background="@drawable/bg_round_10"
+        android:clickable="true"
+        android:elevation="20dp"
+        android:focusable="true"
+        android:gravity="center"
         android:text="@string/todelivery_btn_babycar"
         android:textColor="@color/green_58D78F"
         android:textSize="16sp"
@@ -80,13 +96,16 @@
         app:layout_constraintTop_toBottomOf="@+id/btnChair" />
 
 
-    <Button
+    <TextView
         android:id="@+id/btnNothing"
         android:layout_width="316dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/radius"
-        android:elevation="80dp"
+        android:background="@drawable/bg_round_10"
+        android:clickable="true"
+        android:elevation="20dp"
+        android:focusable="true"
+        android:gravity="center"
         android:text="@string/todelivery_btn_nothing"
         android:textColor="@color/green_58D78F"
         android:textSize="16sp"
@@ -96,14 +115,15 @@
         app:layout_constraintTop_toBottomOf="@+id/btnBabycar" />
 
 
-    <Button
+    <TextView
         android:id="@+id/btnPrev"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/radius"
+        android:background="@drawable/bg_round_10"
         android:backgroundTint="@color/green_58D78F"
         android:elevation="100dp"
+        android:gravity="center"
         android:text="@string/btn_previous"
         android:textColor="@color/white"
         android:textSize="20sp"

@@ -29,7 +29,7 @@
 
     <!--버스 기사님께 선택 화면-->
     <string name="todelivery_btn_wait">버스 정차 시 조금 기다려주세요.</string>
-    <string name="todelivery_btn_nothing">없음</string>
+    <string name="todelivery_btn_nothing">없어요.</string>
     <string name="todelivery_btn_babycar">유모차가 있어요.</string>
     <string name="todelivery_btn_chair">휠체어용 발판을 이용할게요.</string>
     <string name="complete_btn_final">버스타미 이용하러 가기</string>
@@ -48,5 +48,6 @@
     <string name="onboarding_second">이제 그런 일은 없습니다.</string>
     <string name="login_title">버스타미</string>
     <string name="login_description">버스타미가 안전한 버스 탑승을 도울게요!</string>
+    <string name="category_description">교통약자란 장애인, 고령자, 임산부, 영유아를 동반한 사람,\n어린이 등 일상에서 이동에 불편을 느끼는 자로 정의합니다.\n\n승차벨 이용 정보 수집을 위해\n정확한 탑승 유형을 선택하시기 바랍니다.</string>
 
 </resources>

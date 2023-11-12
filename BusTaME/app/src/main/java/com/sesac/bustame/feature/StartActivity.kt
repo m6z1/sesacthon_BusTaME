@@ -15,16 +15,6 @@ class StartActivity : AppCompatActivity() {
 
         binding.btnNext.setOnClickListener {
             navigateToNextActivity()
-            /*
-            val alertDialog = AlertDialog.Builder(this)
-            alertDialog.setTitle("title").setMessage("시작메뉴")
-                .setPositiveButton("Start", DialogInterface.OnClickListener { dialog, id ->
-                    navigateToNextActivity()
-                })
-            alertDialog.create()
-            alertDialog.show()
-        }
-             */
         }
     }
 

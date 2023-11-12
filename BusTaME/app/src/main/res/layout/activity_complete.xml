@@ -10,27 +10,40 @@
         android:id="@+id/setRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/complete_rate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <TextView
         android:id="@+id/compName"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_round_20"
+        android:backgroundTint="@color/green_58D78F"
+        android:fontFamily="@font/semi_bold"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="6dp"
         android:src="@drawable/complete_name"
-        app:layout_constraintStart_toStartOf="@id/setRate"
+        android:text="설정 완료!"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setRate" />
 
-    <ImageView
+    <TextView
         android:id="@+id/compIntro"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="120dp"
-        android:src="@drawable/complete_intro"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/semi_bold"
+        android:gravity="center"
+        android:text="편리한 버스 탑승을 위해\n버스타미가 도와줄게요!"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/compName" />
@@ -38,19 +51,23 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/complete_logo"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/ic_bustame"
         app:layout_constraintEnd_toEndOf="@+id/compIntro"
         app:layout_constraintStart_toStartOf="@+id/compIntro"
         app:layout_constraintTop_toBottomOf="@+id/compIntro" />
 
-    <Button
+    <TextView
         android:id="@+id/btnFinal"
-        android:layout_width="0dp"
-        android:layout_height="68dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="64dp"
         android:layout_marginBottom="40dp"
-        android:background="@drawable/radius"
+        android:background="@drawable/bg_round_10"
         android:backgroundTint="@color/green_58D78F"
+        android:fontFamily="@font/medium"
+        android:gravity="center"
         android:text="@string/complete_btn_final"
         android:textColor="@color/white"
         android:textSize="20sp"
