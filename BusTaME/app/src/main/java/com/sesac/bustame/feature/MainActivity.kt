@@ -1,28 +1,28 @@
 package com.sesac.bustame.feature
 
+import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.ContextCompat
-import com.sesac.bustame.databinding.ActivityMainBinding
-import net.daum.mf.map.api.MapView
-import android.Manifest
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.JsonObject
 import com.sesac.bustame.BusRideBell
+import com.sesac.bustame.R
 import com.sesac.bustame.data.model.ItemList
 import com.sesac.bustame.data.model.LocationInfo
-import com.sesac.bustame.R
 import com.sesac.bustame.data.network.RetrofitClient
+import com.sesac.bustame.databinding.ActivityMainBinding
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
+import net.daum.mf.map.api.MapView
 import net.daum.mf.map.api.MapView.CurrentLocationEventListener
 import net.daum.mf.map.api.MapView.POIItemEventListener
 import retrofit2.Call
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var bottomSheetDefaultDialog: BottomSheetDialog
-    private lateinit var bottomSheetBusInfoDialog : BottomSheetDialog
+    private lateinit var bottomSheetBusInfoDialog: BottomSheetDialog
     private lateinit var locationJson: JsonObject
     private var tmX: String? = null
     private var tmY: String? = null
@@ -56,9 +56,10 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
         locationJson = JsonObject()
 
         // 이전 액티비티 값 받아오기
-        passengerTypeValue = intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
+        passengerTypeValue =
+            intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
         messageValue = intent.getStringExtra(BusRideBell.BUS_MESSAGE_KEY).toString()
-        Log.d("intentvalue","$passengerTypeValue $messageValue")
+        Log.d("intentvalue", "$passengerTypeValue $messageValue")
 
         // 권한 ID 선언
         val internetPermission =
@@ -79,14 +80,11 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
                 arrayOf(
                     Manifest.permission.INTERNET,
                     Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
                 ),
-                1000
+                1000,
             )
         }
-
-        // default 바텀 시트
-        createDefaultBottomSheet()
 
         // 현재 위치로 지도 이동
         binding.mapView.currentLocationTrackingMode =
@@ -97,21 +95,18 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
 
         binding.mapView.setPOIItemEventListener(this)
 
-        binding.mainBar.setOnClickListener {
+        binding.myLocation.setOnClickListener {
             binding.mapView.currentLocationTrackingMode =
                 MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading
             binding.mapView.setShowCurrentLocationMarker(true)
-            if(!isDefalutBottomSheetOpen) {
-                createDefaultBottomSheet()
-                isDefalutBottomSheetOpen = true
-            }
         }
+        findBusstop()
     }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray
+        grantResults: IntArray,
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1000) {
@@ -135,7 +130,7 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
     override fun onCurrentLocationUpdate(
         mapView: MapView,
         mapPoint: MapPoint,
-        accuracyInMeters: Float
+        accuracyInMeters: Float,
     ) {
         Log.d("lati", "위치위치위치위치")
         tmX = mapPoint.mapPointGeoCoord.latitude.toString() // 위도
@@ -166,13 +161,12 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
     }
 
     override fun onCalloutBalloonOfPOIItemTouched(mapView: MapView, marker: MapPOIItem) {
-
     }
 
     override fun onCalloutBalloonOfPOIItemTouched(
         p0: MapView?,
         p1: MapPOIItem?,
-        p2: MapPOIItem.CalloutBalloonButtonType?
+        p2: MapPOIItem.CalloutBalloonButtonType?,
     ) {
         TODO("Not yet implemented")
     }
@@ -182,12 +176,8 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
         // 이 메서드가 필요하지 않다면 빈 구현으로 남겨둘 수 있습니다.
     }
 
-    private fun createDefaultBottomSheet() {
-        val bottomSheetView = layoutInflater.inflate(R.layout.layout_bottom_sheet_default, null)
-        val btnAroundBusStop = bottomSheetView.findViewById<Button>(R.id.btnAroundBusStop)
-
-        // 주변 정류장 확인하기 눌렀을 때
-        btnAroundBusStop.setOnClickListener {
+    private fun findBusstop() {
+        binding.findBusStop.setOnClickListener {
             Toast.makeText(this, "주변 버스정류장을 확인합니다", Toast.LENGTH_SHORT).show()
             // 클릭 이벤트 처리 로직 추가
 
@@ -215,13 +205,11 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
                                 marker.markerType = MapPOIItem.MarkerType.CustomImage
                                 marker.customImageResourceId = R.drawable.ic_busstop_marker
                                 marker.customSelectedImageResourceId = R.drawable.ic_busstop_marker
-                                marker.isCustomImageAutoscale = true      // 커스텀 마커 이미지 크기 자동 조정
+                                marker.isCustomImageAutoscale = true // 커스텀 마커 이미지 크기 자동 조정
                                 marker.setCustomImageAnchor(0.5f, 1.0f)
 
                                 // 마커를 지도에 추가합니다
                                 binding.mapView.addPOIItem(marker)
-
-
                             }
                         } else {
                             // 서버로부터 실패 응답을 받은 경우 처리
@@ -239,25 +227,13 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
                 Toast.makeText(this, "위치를 찾을 수 없음", Toast.LENGTH_SHORT).show()
             }
         }
-
-        bottomSheetDefaultDialog = BottomSheetDialog(this, R.style.AppBottomSheetDialogTheme)
-        bottomSheetDefaultDialog.behavior.peekHeight = 1200 // 원하는 높이 값으로 설정
-        bottomSheetDefaultDialog.behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        bottomSheetDefaultDialog.setContentView(bottomSheetView)
-        bottomSheetDefaultDialog.setOnDismissListener {
-            isDefalutBottomSheetOpen = false
-        }
-        bottomSheetDefaultDialog.show()
-
-
     }
-
 
     // businfo 바텀시트 생성 및 표시
     private fun createBusInfoBottomSheet(
         responseData: ItemList,
         busStopNum: String,
-        busStopName: String
+        busStopName: String,
     ) {
         val bottomSheetView = layoutInflater.inflate(R.layout.layout_bottom_sheet_businfo, null)
         val busStopNumTextView = bottomSheetView.findViewById<TextView>(R.id.busStopNum)
@@ -287,10 +263,9 @@ class MainActivity : AppCompatActivity(), CurrentLocationEventListener, POIItemE
 
         bottomSheetBusInfoDialog = BottomSheetDialog(this, R.style.AppBottomSheetDialogTheme)
         bottomSheetBusInfoDialog.behavior.peekHeight = 1200 // 원하는 높이 값으로 설정
-        bottomSheetBusInfoDialog.behavior.state = BottomSheetBehavior.STATE_COLLAPSED //바텀 시트 완전히 펴져있는 상태
+        bottomSheetBusInfoDialog.behavior.state =
+            BottomSheetBehavior.STATE_COLLAPSED // 바텀 시트 완전히 펴져있는 상태
         bottomSheetBusInfoDialog.setContentView(bottomSheetView)
         bottomSheetBusInfoDialog.show()
-
     }
-
 }

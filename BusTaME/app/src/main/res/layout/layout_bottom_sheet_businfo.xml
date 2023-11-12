@@ -8,15 +8,13 @@
     app:behavior_draggable="true"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-
     <ImageView
-        android:id="@+id/bottomSheetTop"
+        android:id="@+id/top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|top"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_bottomsheet_first"
+        android:src="@drawable/ic_botsheet_top"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,12 +23,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textColor="@color/black_575757"
+        android:textSize="16sp"
+        android:fontFamily="@font/medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bottomSheetTop"
+        app:layout_constraintTop_toBottomOf="@id/top"
         tools:text="17008" />
 
     <TextView
@@ -41,7 +39,7 @@
         android:text="동양미래대학교.구로성심병원(중)"
         android:textColor="@color/black"
         android:textSize="24sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/busStopNum"
@@ -53,9 +51,9 @@
         android:layout_width="wrap_content"
         android:layout_height="52dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/radius"
         android:backgroundTint="@color/green_58D78F"
-        android:layout_marginBottom="40dp"
         android:paddingHorizontal="20dp"
         android:text="승차벨 누르러 가기"
         android:textColor="@color/white"
@@ -65,12 +63,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/busStopName" />
-    
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:src="@drawable/padding_for_bottomsheet"
-        app:layout_constraintTop_toBottomOf="@id/btnGoBusBell"/>
+        app:layout_constraintTop_toBottomOf="@id/btnGoBusBell" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
