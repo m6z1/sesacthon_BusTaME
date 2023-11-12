@@ -12,9 +12,9 @@
         android:id="@+id/top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:src="@drawable/ic_botsheet_top"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,9 +23,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:fontFamily="@font/medium"
         android:textColor="@color/black_575757"
         android:textSize="16sp"
-        android:fontFamily="@font/medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top"
@@ -36,33 +36,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:fontFamily="@font/medium"
         android:text="동양미래대학교.구로성심병원(중)"
         android:textColor="@color/black"
         android:textSize="24sp"
-        android:fontFamily="@font/medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/busStopNum"
         tools:text="동양미래대학교.구로성심병원(중)" />
 
+    <ImageView
+        android:id="@+id/ic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_bottomsheet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/busStopName" />
 
-    <Button
+
+    <TextView
         android:id="@+id/btnGoBusBell"
         android:layout_width="wrap_content"
-        android:layout_height="52dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="40dp"
-        android:background="@drawable/radius"
-        android:backgroundTint="@color/green_58D78F"
-        android:paddingHorizontal="20dp"
+        android:background="@drawable/bg_round_10"
+        android:backgroundTint="#D6F1E2"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="10dp"
         android:text="승차벨 누르러 가기"
-        android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textColor="@color/green_58D78F"
+        android:drawableStart="@drawable/ic_green_bell_bot"
+        android:textSize="16sp"
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/busStopName" />
+        app:layout_constraintTop_toBottomOf="@id/ic" />
 
     <ImageView
         android:layout_width="match_parent"
