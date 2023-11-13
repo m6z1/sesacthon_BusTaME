@@ -125,7 +125,7 @@
         android:fontFamily="@font/bold"
         android:paddingHorizontal="96dp"
         android:paddingVertical="18dp"
-        android:text="승차벨 울리기"
+        android:text="승차벨 취소하기"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

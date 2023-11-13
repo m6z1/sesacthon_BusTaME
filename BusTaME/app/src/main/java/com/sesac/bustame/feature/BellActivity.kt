@@ -104,7 +104,7 @@ class BellActivity : AppCompatActivity() {
         })
 
         // 리사이클러뷰 설정
-        itemAdapter = ItemAdapter(itemList, passengerTypeValue, messageValue)
+        itemAdapter = ItemAdapter(itemList, passengerTypeValue, messageValue, binding.button)
         binding.busRecyclerView.adapter = itemAdapter
         binding.busRecyclerView.layoutManager = LinearLayoutManager(this)
     }

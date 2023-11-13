@@ -1,5 +1,6 @@
 package com.sesac.bustame.feature
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,10 +40,12 @@ class ItemAdapter(
 
         if (selectedPosition == position) {
             holder.itemView.setBackgroundResource(R.color.green_E8F8EF)
-            button.setBackgroundResource(R.color.green_58D78F)
+            val colorStateList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.green_58D78F))
+            button.backgroundTintList = colorStateList
         } else {
             holder.itemView.setBackgroundResource(android.R.color.white)
-            button.setBackgroundResource(R.color.green_D6F1E2)
+            val colorStateList = ColorStateList.valueOf(ContextCompat.getColor(holder.itemView.context, R.color.green_D6F1E2))
+            button.backgroundTintList = colorStateList
         }
     }
 

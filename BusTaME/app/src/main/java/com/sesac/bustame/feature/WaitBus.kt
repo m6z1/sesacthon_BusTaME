@@ -133,16 +133,6 @@ class WaitBus : AppCompatActivity() {
                             }
                         }
 
-                        if (!::itemAdapter.isInitialized) {
-                            itemAdapter = ItemAdapter(
-                                itemList,
-                                messageValue,
-                                passengerTypeValue,
-                            ) // itemAdapter 초기화
-                        } else {
-                            itemAdapter.notifyDataSetChanged()
-                        }
-
                         Log.d("serverresponse", "success")
                     } else {
                         Log.d("serverresponse", "리스트가 비어있어요")
