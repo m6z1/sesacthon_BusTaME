@@ -44,5 +44,11 @@ class SetUserCategory : AppCompatActivity() {
             busStopNumber = "",
         )
         RideBellDataManager.saveRideBellData(rideBellData, this)
+
+        val sharedPreferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putString("passengerType", rideBellData.passengerType)
+            apply()
+        }
     }
 }

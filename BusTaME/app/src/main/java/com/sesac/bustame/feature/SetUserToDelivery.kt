@@ -19,13 +19,12 @@ class SetUserToDelivery : AppCompatActivity() {
         binding = ActivitySetUserToDeliveryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        //이전 버튼 클릭 시
+        // 이전 버튼 클릭 시
         binding.btnPrev.setOnClickListener {
             finish()
         }
 
-        //intent 값 가져오기
+        // intent 값 가져오기
         passengerTypeValue =
             intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
 
@@ -33,7 +32,6 @@ class SetUserToDelivery : AppCompatActivity() {
             messageValue = "버스 정차 시 조금 기다려주세요"
             saveRideBellData()
             navigateToNextActivity()
-
         }
         binding.btnChair.setOnClickListener {
             messageValue = "휠체어용 발판을 이용할게요"
@@ -51,7 +49,6 @@ class SetUserToDelivery : AppCompatActivity() {
             saveRideBellData()
             navigateToNextActivity()
         }
-
     }
 
     private fun navigateToNextActivity() {
@@ -66,8 +63,18 @@ class SetUserToDelivery : AppCompatActivity() {
             passengerType = passengerTypeValue!!,
             message = messageValue,
             busNumber = "",
-            busStopNumber = ""
+            busStopNumber = "",
         )
         RideBellDataManager.saveRideBellData(rideBellData, this)
+
+        // SharedPreferences를 사용하여 값 저장
+        val sharedPreferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putString("passengerType", rideBellData.passengerType)
+            putString("message", rideBellData.message)
+            putString("busNumber", rideBellData.busNumber)
+            putString("busStopNumber", rideBellData.busStopNumber)
+            apply()
+        }
     }
 }

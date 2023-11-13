@@ -53,10 +53,12 @@ class BellActivity : AppCompatActivity() {
         Log.d("markervalue", "$busStopNum $busStopName")
 
         // 이전 액티비티 값 받아오기
-        passengerTypeValue =
-            intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
-        messageValue = intent.getStringExtra(BusRideBell.BUS_MESSAGE_KEY).toString()
-        Log.d("intentvalue", "$passengerTypeValue $messageValue")
+        // SharedPreferences에서 값 가져오기
+        val sharedPreferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+        passengerTypeValue = sharedPreferences.getString("passengerType", "").toString()
+        messageValue = sharedPreferences.getString("message", "").toString()
+
+        Log.d("SharedPreferences", "passengerType: $passengerTypeValue, message: $messageValue")
 
         // 상단의 버스정류장 정보 박스
         binding.busStopName.text = busStopName
