@@ -1,12 +1,13 @@
 package com.sesac.bustame.feature
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -236,21 +237,31 @@ class BellActivity : AppCompatActivity() {
     }
 
     private fun showPopupDialog() {
-        Log.d("popupvalue", "$passengerTypeValue $messageValue")
-        val selectedBusNum = itemAdapter.getSelectedBusNum()
-        val alertDialogBuilder = AlertDialog.Builder(this)
-        alertDialogBuilder.setTitle("${selectedBusNum}번 버스 승차벨을 울릴까요?")
-        alertDialogBuilder.setMessage("승객 유형: $passengerTypeValue\n요청: $messageValue\n")
-        alertDialogBuilder.setPositiveButton("예") { dialog: DialogInterface, _: Int ->
-            busNumValue = selectedBusNum
-            sendUserRideBellData()
-            dialog.dismiss() // 다이얼로그 닫기
-        }
-        alertDialogBuilder.setNegativeButton("취소") { dialog: DialogInterface, _: Int ->
-            dialog.dismiss() // 다이얼로그 닫기
-        }
+        // 커스텀 다이얼로그 레이아웃 inflate
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_bus_bell, null)
 
+        // 커스텀 다이얼로그에 보여질 버스 번호 설정
+        val selectedBusNum = itemAdapter.getSelectedBusNum()
+        val tvBusNum = dialogView.findViewById<TextView>(R.id.dialog_bus_num)
+        tvBusNum.text = selectedBusNum
+
+        // AlertDialog Builder를 사용하여 커스텀 다이얼로그 생성
+        val alertDialogBuilder = AlertDialog.Builder(this).setView(dialogView)
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()
+
+        // 확인 버튼: sendUserRideBellData() 함수를 호출하고 다이얼로그 닫기
+        val okButton = dialogView.findViewById<TextView>(R.id.dialog_tv_ok)
+        okButton.setOnClickListener {
+            busNumValue = selectedBusNum
+            sendUserRideBellData()
+            alertDialog.dismiss()
+        }
+
+        // 취소 버튼: 다이얼로그 닫기
+        val cancelButton = dialogView.findViewById<TextView>(R.id.dialog_tv_cancel)
+        cancelButton.setOnClickListener {
+            alertDialog.dismiss()
+        }
     }
 }
