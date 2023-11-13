@@ -50,7 +50,7 @@
 
     <Button
         android:id="@+id/busNum"
-        android:layout_width="160dp"
+        android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginTop="56dp"
         android:background="@drawable/radius"
@@ -62,7 +62,7 @@
         app:layout_constraintEnd_toEndOf="@+id/circularProgressBar"
         app:layout_constraintStart_toStartOf="@+id/circularProgressBar"
         app:layout_constraintTop_toTopOf="@+id/circularProgressBar"
-        tools:text="160번 버스" />
+        tools:text="160" />
 
 
     <TextView
@@ -71,8 +71,8 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="28sp"
-        android:textStyle="bold"
+        android:textSize="44sp"
+        android:fontFamily="@font/bold"
         app:layout_constraintBottom_toBottomOf="@+id/circularProgressBar"
         app:layout_constraintEnd_toEndOf="@+id/circularProgressBar"
         app:layout_constraintHorizontal_bias="0.495"
