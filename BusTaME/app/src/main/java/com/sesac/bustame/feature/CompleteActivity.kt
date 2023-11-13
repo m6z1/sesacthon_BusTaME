@@ -18,6 +18,9 @@ class CompleteActivity : AppCompatActivity() {
         binding = ActivityCompleteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val sharedPreferences = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+        sharedPreferences.edit().putBoolean("isUserRegistered", true).apply()
+
         // 인텐트에서 값을 가져옴
         messageValue = intent.getStringExtra(BusRideBell.BUS_MESSAGE_KEY).toString()
         passengerTypeValue = intent.getStringExtra(BusRideBell.BUS_PASSENGER_TYPE_VALUE_KEY).toString()
